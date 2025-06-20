@@ -66,15 +66,15 @@
             "uniqueID": "69571ba7-0e6c-4202-be46-6d2d781d2d22",
             "ioValues": [
                 {
-                    "name": "height",
-                    "ioValue": 10
-                },
-                {
                     "name": "inputShape",
-                    "ioValue": 10
+                    "ioValue": "902265eb-1e76-4c47-b407-c968ea10559e"
                 },
                 {
                     "name": "dist",
+                    "ioValue": 10
+                },
+                {
+                    "name": "height",
                     "ioValue": 10
                 }
             ],
@@ -90,6 +90,13 @@
             "ap2Primary": true,
             "ap1ID": "faf25742-ee63-4660-93f6-61373f099b54",
             "ap2ID": "902265eb-1e76-4c47-b407-c968ea10559e"
+        },
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "inputShape",
+            "ap2Primary": false,
+            "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
+            "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
         },
         {
             "ap1Name": "geometry",
