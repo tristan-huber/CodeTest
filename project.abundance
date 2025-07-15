@@ -185,6 +185,88 @@
                 }
             ],
             "description": "Moves a shape laterally in X, Y, Z."
+        },
+        {
+            "atomType": "CutLayout",
+            "name": "Cut Layout",
+            "x": 0.67578125,
+            "y": 0.5238095238095238,
+            "uniqueID": "fca1efcb-4566-492e-9a06-e46b826efa99",
+            "ioValues": [
+                {
+                    "name": "geometry",
+                    "ioValue": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9"
+                },
+                {
+                    "name": "Sheet Width",
+                    "ioValue": 1219
+                },
+                {
+                    "name": "Sheet Height",
+                    "ioValue": 2438
+                },
+                {
+                    "name": "Part Padding",
+                    "ioValue": 6
+                }
+            ],
+            "description": "Extracts all parts tagged for cutting and lays them out on a sheet to cut.",
+            "placements": [
+                [
+                    {
+                        "id": 0,
+                        "rotate": 240,
+                        "translate": {
+                            "x": 21.519152776500263,
+                            "y": 26.86008137700147
+                        }
+                    },
+                    {
+                        "id": 1,
+                        "rotate": 60,
+                        "translate": {
+                            "x": 67.89554623630065,
+                            "y": 32.884656751406
+                        }
+                    }
+                ]
+            ]
+        },
+        {
+            "atomType": "Assembly",
+            "name": "Assembly",
+            "x": 0.5286458333333334,
+            "y": 0.6279761904761905,
+            "uniqueID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9",
+            "ioValues": [
+                {
+                    "name": "Shape 1",
+                    "ioValue": "902265eb-1e76-4c47-b407-c968ea10559e"
+                },
+                {
+                    "name": "Shape 3",
+                    "ioValue": "445b490a-66b1-42fb-a7c7-fc519fcd1f85"
+                }
+            ],
+            "description": "Pick between assembly and fusion to join input geometries. Assembly takes multiple shapes together into one, shapes higher in the inputs list will cut into shapes lower on the input list where they overlap. Fusion takes all shapes or sketches and fuses them permanently into a single shape"
+        },
+        {
+            "atomType": "Extrude",
+            "name": "Extrude",
+            "x": 0.45833333333333337,
+            "y": 0.5892857142857143,
+            "uniqueID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
+            "ioValues": [
+                {
+                    "name": "geometry",
+                    "ioValue": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2"
+                },
+                {
+                    "name": "height",
+                    "ioValue": 10
+                }
+            ],
+            "description": "Extrudes a 2D shape. Input can be negitive. "
         }
     ],
     "allConnectors": [
@@ -208,6 +290,20 @@
             "ap2Primary": false,
             "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
             "ap2ID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4"
+        },
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "Shape 1",
+            "ap2Primary": false,
+            "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
+            "ap2ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9"
+        },
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "geometry",
+            "ap2Primary": true,
+            "ap1ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2",
+            "ap2ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85"
         },
         {
             "ap1Name": "number or geometry",
@@ -236,6 +332,20 @@
             "ap2Primary": false,
             "ap1ID": "c8cb90b7-edd2-48e8-9e6c-52cf5a762d5f",
             "ap2ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039"
+        },
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "geometry",
+            "ap2Primary": false,
+            "ap1ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9",
+            "ap2ID": "fca1efcb-4566-492e-9a06-e46b826efa99"
+        },
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "Shape 3",
+            "ap2Primary": false,
+            "ap1ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
+            "ap2ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9"
         }
     ],
     "unitsKey": "MM",
