@@ -72,7 +72,7 @@
             "ioValues": [
                 {
                     "name": "inputShape",
-                    "ioValue": ""
+                    "ioValue": "445b490a-66b1-42fb-a7c7-fc519fcd1f85"
                 },
                 {
                     "name": "dist",
@@ -346,6 +346,13 @@
             "ap2Primary": false,
             "ap1ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
             "ap2ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9"
+        },
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "inputShape",
+            "ap2Primary": false,
+            "ap1ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
+            "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
         }
     ],
     "unitsKey": "MM",
