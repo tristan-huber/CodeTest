@@ -66,8 +66,8 @@
         {
             "atomType": "Code",
             "name": "Code",
-            "x": 0.62890625,
-            "y": 0.7767857142857143,
+            "x": 0.5729166666666667,
+            "y": 0.7971428571428572,
             "uniqueID": "69571ba7-0e6c-4202-be46-6d2d781d2d22",
             "ioValues": [
                 {
@@ -85,7 +85,7 @@
             ],
             "description": "Defines a Replicad code block.",
             "codeVersion": 1,
-            "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      //Takes the address and gets the shape from the library\n      let shape = library[inputShape]\n\n\n      // call every library method provided to code molecules\n      const rotated = await Rotate(shape, 5, 10, dist)\n      const moved = await Move(shape, 0, 9, height)\n      const scaled = await Scale(shape, 0.7)\n      const assembled = await Assembly([shape, moved])\n      const inter = await Intersect(shape, moved)\n      const cut = await CutAssembly(shape, [scaled, moved])\n      const modifiedAssembly = await AssemblyMap(assembled, async (s) => {return await Rotate(s, 0, 10, 90)})\n      console.log(await AssemblyAsIterable(assembled))\n      console.log(GetBounds(shape))\n      const filleted = await Fillet(shape, 0.3)\n      const chamfered = await Chamfer(shape, 1)\n\n      return Assembly([modifiedAssembly, inter, cut, filleted, chamfered])\n\n"
+            "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      //Takes the address and gets the shape from the library\n\n      let shape = library[inputShape]\n      console.log(\"custom code\")\n      console.log(library)\n      console.log(inputShape)\n\n      // call every library method provided to code molecules\n      const rotated = await Rotate(shape, 5, 10, dist)\n      const moved = await Move(shape, 0, 9, height)\n      const scaled = await Scale(shape, 0.7)\n      const assembled = await Assembly([shape, moved])\n      const inter = await Intersect(shape, moved)\n      const cut = await CutAssembly(shape, [scaled, moved])\n      const modifiedAssembly = await AssemblyMap(assembled, async (s) => {return await Rotate(s, 0, 10, 90)})\n      console.log(await AssemblyAsIterable(assembled))\n      console.log(GetBounds(shape))\n      const filleted = await Fillet(shape, 0.3)\n      const chamfered = await Chamfer(shape, 1)\n\n      return Assembly([modifiedAssembly, inter, cut, filleted, chamfered])\n\n"
         },
         {
             "atomType": "Move",
