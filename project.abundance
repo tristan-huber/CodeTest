@@ -73,6 +73,14 @@
                 {
                     "name": "inputShape",
                     "ioValue": "445b490a-66b1-42fb-a7c7-fc519fcd1f85"
+                },
+                {
+                    "name": "dist",
+                    "ioValue": 10
+                },
+                {
+                    "name": "height",
+                    "ioValue": 10
                 }
             ],
             "description": "Defines a Replicad code block.",
@@ -265,72 +273,84 @@
         {
             "ap1Name": "geometry",
             "ap2Name": "geometry",
+            "ap2Primary": true,
             "ap1ID": "faf25742-ee63-4660-93f6-61373f099b54",
             "ap2ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2"
         },
         {
             "ap1Name": "geometry",
             "ap2Name": "Shape 1",
+            "ap2Primary": false,
             "ap1ID": "faf25742-ee63-4660-93f6-61373f099b54",
             "ap2ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039"
         },
         {
             "ap1Name": "geometry",
             "ap2Name": "number or geometry",
+            "ap2Primary": false,
             "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
             "ap2ID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4"
         },
         {
             "ap1Name": "geometry",
             "ap2Name": "Shape 1",
+            "ap2Primary": false,
             "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
             "ap2ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9"
         },
         {
             "ap1Name": "geometry",
             "ap2Name": "geometry",
+            "ap2Primary": true,
             "ap1ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2",
             "ap2ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85"
         },
         {
             "ap1Name": "number or geometry",
             "ap2Name": "yDist",
+            "ap2Primary": false,
             "ap1ID": "74766fec-7684-4e5d-b6d6-454afabaddfb",
             "ap2ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2"
         },
         {
             "ap1Name": "geometry",
             "ap2Name": "geometry",
+            "ap2Primary": true,
             "ap1ID": "90379be9-52a6-4840-8987-2e978c76a660",
             "ap2ID": "c8cb90b7-edd2-48e8-9e6c-52cf5a762d5f"
         },
         {
             "ap1Name": "geometry",
             "ap2Name": "geometry",
+            "ap2Primary": true,
             "ap1ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039",
             "ap2ID": "902265eb-1e76-4c47-b407-c968ea10559e"
         },
         {
             "ap1Name": "geometry",
             "ap2Name": "Shape 2",
+            "ap2Primary": false,
             "ap1ID": "c8cb90b7-edd2-48e8-9e6c-52cf5a762d5f",
             "ap2ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039"
         },
         {
             "ap1Name": "geometry",
             "ap2Name": "geometry",
+            "ap2Primary": false,
             "ap1ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9",
             "ap2ID": "fca1efcb-4566-492e-9a06-e46b826efa99"
         },
         {
             "ap1Name": "geometry",
             "ap2Name": "Shape 3",
+            "ap2Primary": false,
             "ap1ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
             "ap2ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9"
         },
         {
             "ap1Name": "geometry",
             "ap2Name": "inputShape",
+            "ap2Primary": false,
             "ap1ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
             "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
         }
