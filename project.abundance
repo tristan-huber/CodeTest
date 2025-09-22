@@ -67,8 +67,8 @@
             "ioValues": [
                 {
                     "name": "dist",
-                    "ioValue": 10,
-                    "currentEquation": null
+                    "ioValue": 19,
+                    "currentEquation": "19"
                 },
                 {
                     "name": "height",
@@ -78,7 +78,7 @@
             ],
             "description": "Defines a Replicad code block.",
             "codeVersion": 1,
-            "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      //Takes the address and gets the shape from the library\n\n      let shape = library[inputShape]\n      console.log(\"custom code\")\n      console.log(library)\n      console.log(inputShape)\n\n      // call every library method provided to code molecules\n      const rotated = await Rotate(shape, 5, 10, dist)\n      const moved = await Move(shape, 0, 9, height)\n      const scaled = await Scale(shape, 0.7)\n      const assembled = await Assembly([shape, moved])\n      const inter = await Intersect(shape, moved)\n      const cut = await CutAssembly(shape, [scaled, moved])\n      const modifiedAssembly = await AssemblyMap(assembled, async (s) => {return await Rotate(s, 0, 10, 90)})\n      console.log(await AssemblyAsIterable(assembled))\n      console.log(GetBounds(shape))\n      const filleted = await Fillet(moved, 0.3)\n      const chamfered = await Chamfer(shape, 1)\n      return rotated\n      //return Assembly([modifiedAssembly, inter, cut, filleted])\n\n"
+            "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      //Takes the address and gets the shape from the library\n\n      let shape = library[inputShape]\n      console.log(\"custom code\")\n      console.log(library)\n      console.log(inputShape)\n\n      // call every library method provided to code molecules\n      const rotated = await Rotate(shape, 5, 10, dist)\n      const moved = await Move(shape, 0, 9, height)\n      const scaled = await Scale(shape, 0.7)\n      const assembled = await Assembly([shape, moved])\n      const inter = await Intersect(shape, moved)\n      const cut = await CutAssembly(shape, [scaled, moved])\n      const modifiedAssembly = await AssemblyMap(assembled, async (s) => {return await Rotate(s, 0, 10, 90)})\n      console.log(await AssemblyAsIterable(assembled))\n      console.log(GetBounds(shape))\n      const filleted = await Fillet(moved, 0.3)\n      const chamfered = await Chamfer(shape, 1)\n      return chamfered\n      //return Assembly([modifiedAssembly, inter, cut, filleted])\n\n"
         },
         {
             "atomType": "Move",
@@ -234,7 +234,30 @@
             "ioValues": [
                 {
                     "name": "Shape 1",
-                    "ioValue": null
+                    "ioValue": {
+                        "geometry": "extrude-fuse-move-rectangle-10-10-0-9-0-rectangle-50-10-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10",
+                        "tags": [],
+                        "bom": [],
+                        "plane": {
+                            "origin": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "xDir": [
+                                1,
+                                0,
+                                0
+                            ],
+                            "normal": [
+                                0,
+                                0,
+                                1
+                            ]
+                        },
+                        "color": "#aad7f2",
+                        "dimension": "3D"
+                    }
                 },
                 {
                     "name": "Shape 3",
@@ -309,6 +332,12 @@
         },
         {
             "ap1Name": "geometry",
+            "ap2Name": "inputShape",
+            "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
+            "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
+        },
+        {
+            "ap1Name": "geometry",
             "ap2Name": "geometry",
             "ap1ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2",
             "ap2ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85"
@@ -342,12 +371,6 @@
             "ap2Name": "Shape 3",
             "ap1ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
             "ap2ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9"
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "inputShape",
-            "ap1ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
-            "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
         }
     ],
     "unitsKey": "MM",
