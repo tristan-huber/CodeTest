@@ -20,13 +20,7 @@
             "x": 0.98,
             "y": 0.5,
             "uniqueID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4",
-            "ioValues": [
-                {
-                    "name": "number or geometry",
-                    "ioValue": "902265eb-1e76-4c47-b407-c968ea10559e",
-                    "currentEquation": null
-                }
-            ],
+            "ioValues": [],
             "description": "Connect geometry here to make it available in the next level up. "
         },
         {
@@ -57,11 +51,6 @@
             "uniqueID": "902265eb-1e76-4c47-b407-c968ea10559e",
             "ioValues": [
                 {
-                    "name": "geometry",
-                    "ioValue": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039",
-                    "currentEquation": null
-                },
-                {
                     "name": "height",
                     "ioValue": 10,
                     "currentEquation": null
@@ -76,11 +65,6 @@
             "y": 0.8720238095238095,
             "uniqueID": "69571ba7-0e6c-4202-be46-6d2d781d2d22",
             "ioValues": [
-                {
-                    "name": "inputShape",
-                    "ioValue": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
-                    "currentEquation": null
-                },
                 {
                     "name": "dist",
                     "ioValue": 10,
@@ -104,11 +88,6 @@
             "uniqueID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2",
             "ioValues": [
                 {
-                    "name": "geometry",
-                    "ioValue": "faf25742-ee63-4660-93f6-61373f099b54",
-                    "currentEquation": null
-                },
-                {
                     "name": "xDist",
                     "ioValue": 0,
                     "currentEquation": null
@@ -129,7 +108,7 @@
         {
             "atomType": "Input",
             "name": "Input (1)",
-            "x": 0.025384615384615384,
+            "x": 0.024749999999999998,
             "y": 0.75,
             "uniqueID": "74766fec-7684-4e5d-b6d6-454afabaddfb",
             "ioValues": [],
@@ -165,11 +144,57 @@
             "ioValues": [
                 {
                     "name": "Shape 1",
-                    "ioValue": "faf25742-ee63-4660-93f6-61373f099b54"
+                    "ioValue": {
+                        "geometry": "rectangle-50-10",
+                        "dimension": "2D",
+                        "plane": {
+                            "origin": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "xDir": [
+                                1,
+                                0,
+                                0
+                            ],
+                            "normal": [
+                                0,
+                                0,
+                                1
+                            ]
+                        },
+                        "color": "#aad7f2",
+                        "tags": [],
+                        "bom": []
+                    }
                 },
                 {
                     "name": "Shape 2",
-                    "ioValue": "c8cb90b7-edd2-48e8-9e6c-52cf5a762d5f"
+                    "ioValue": {
+                        "geometry": "move-rectangle-10-10-0-9-0",
+                        "dimension": "2D",
+                        "plane": {
+                            "origin": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "xDir": [
+                                1,
+                                0,
+                                0
+                            ],
+                            "normal": [
+                                0,
+                                0,
+                                1
+                            ]
+                        },
+                        "color": "#aad7f2",
+                        "tags": [],
+                        "bom": []
+                    }
                 }
             ],
             "description": "Pick between assembly and fusion to join input geometries. Assembly takes multiple shapes together into one, shapes higher in the inputs list will cut into shapes lower on the input list where they overlap. Fusion takes all shapes or sketches and fuses them permanently into a single shape",
@@ -182,11 +207,6 @@
             "y": 0.8333333333333334,
             "uniqueID": "c8cb90b7-edd2-48e8-9e6c-52cf5a762d5f",
             "ioValues": [
-                {
-                    "name": "geometry",
-                    "ioValue": "90379be9-52a6-4840-8987-2e978c76a660",
-                    "currentEquation": null
-                },
                 {
                     "name": "xDist",
                     "ioValue": 0,
@@ -214,11 +234,34 @@
             "ioValues": [
                 {
                     "name": "Shape 1",
-                    "ioValue": "902265eb-1e76-4c47-b407-c968ea10559e"
+                    "ioValue": null
                 },
                 {
                     "name": "Shape 3",
-                    "ioValue": "445b490a-66b1-42fb-a7c7-fc519fcd1f85"
+                    "ioValue": {
+                        "geometry": "extrude-move-rectangle-50-10-0-90-0-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-20",
+                        "dimension": "3D",
+                        "plane": {
+                            "origin": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "xDir": [
+                                1,
+                                0,
+                                0
+                            ],
+                            "normal": [
+                                0,
+                                0,
+                                1
+                            ]
+                        },
+                        "color": "#aad7f2",
+                        "tags": [],
+                        "bom": []
+                    }
                 }
             ],
             "description": "Pick between assembly and fusion to join input geometries. Assembly takes multiple shapes together into one, shapes higher in the inputs list will cut into shapes lower on the input list where they overlap. Fusion takes all shapes or sketches and fuses them permanently into a single shape"
@@ -230,11 +273,6 @@
             "y": 0.86,
             "uniqueID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
             "ioValues": [
-                {
-                    "name": "geometry",
-                    "ioValue": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2",
-                    "currentEquation": null
-                },
                 {
                     "name": "height",
                     "ioValue": 20,
