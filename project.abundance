@@ -64,12 +64,12 @@
                 {
                     "name": "dist",
                     "ioValue": 20,
-                    "currentEquation": "20"
+                    "currentEquation": null
                 },
                 {
                     "name": "height",
                     "ioValue": -10,
-                    "currentEquation": "-10"
+                    "currentEquation": null
                 }
             ],
             "codeVersion": 1,
@@ -137,7 +137,7 @@
                 {
                     "name": "Shape 1",
                     "ioValue": {
-                        "geometry": "rectangle-50-10",
+                        "geometry": "rectangle-a07b1b89b61f8d67cbc665737c7cbe8f9379e278df9f3a5ebdedcdcd21acdce6",
                         "dimension": "2D",
                         "plane": {
                             "origin": [
@@ -164,7 +164,7 @@
                 {
                     "name": "Shape 2",
                     "ioValue": {
-                        "geometry": "move-rectangle-10-10-0-9-0",
+                        "geometry": "move-88e75486f380789b80febac0883ca83ce6a3703e600b2a5c874b8cb1f58e7b8d",
                         "dimension": "2D",
                         "plane": {
                             "origin": [
@@ -225,7 +225,7 @@
                 {
                     "name": "Shape 1",
                     "ioValue": {
-                        "geometry": "extrude-fuse-move-rectangle-10-10-0-9-0-rectangle-50-10-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-10",
+                        "geometry": "extrude-d5a6aa784db837300291061b9dae684f8ecd9218b3ea1dc7c6ece4c44b982dee",
                         "tags": [],
                         "bom": [],
                         "plane": {
@@ -252,7 +252,7 @@
                 {
                     "name": "Shape 3",
                     "ioValue": {
-                        "geometry": "extrude-move-rectangle-50-10-0-90-0-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-20",
+                        "geometry": "extrude-e220982ecd854ba52b52247623e581e06b3bc1ae58627b089ffc6bec23dc705c",
                         "dimension": "3D",
                         "plane": {
                             "origin": [
@@ -288,7 +288,7 @@
                 {
                     "name": "height",
                     "ioValue": 20,
-                    "currentEquation": null
+                    "currentEquation": "20"
                 }
             ]
         }
