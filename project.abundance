@@ -69,10 +69,6 @@
         {
           "name": "height",
           "ioValue": -10
-        },
-        {
-          "name": "inputShape",
-          "ioValue": "__GEOMETRY_INPUT__"
         }
       ],
       "codeVersion": 1,
@@ -94,7 +90,7 @@
         },
         {
           "name": "yDist",
-          "ioValue": 90
+          "ioValue": "__GEOMETRY_INPUT__"
         },
         {
           "name": "zDist",
@@ -134,57 +130,11 @@
       "ioValues": [
         {
           "name": "Shape 1",
-          "ioValue": {
-            "geometry": "rectangle-50-10",
-            "dimension": "2D",
-            "plane": {
-              "origin": [
-                0,
-                0,
-                0
-              ],
-              "xDir": [
-                1,
-                0,
-                0
-              ],
-              "normal": [
-                0,
-                0,
-                1
-              ]
-            },
-            "color": "#aad7f2",
-            "tags": [],
-            "bom": []
-          }
+          "ioValue": null
         },
         {
           "name": "Shape 2",
-          "ioValue": {
-            "geometry": "move-rectangle-10-10-0-9-0",
-            "dimension": "2D",
-            "plane": {
-              "origin": [
-                0,
-                0,
-                0
-              ],
-              "xDir": [
-                1,
-                0,
-                0
-              ],
-              "normal": [
-                0,
-                0,
-                1
-              ]
-            },
-            "color": "#aad7f2",
-            "tags": [],
-            "bom": []
-          }
+          "ioValue": null
         }
       ],
       "unionType": "Fusion"
