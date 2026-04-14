@@ -1,368 +1,309 @@
 {
-    "atomType": "Molecule",
-    "name": "CodeTest",
-    "x": 0,
-    "y": 0,
-    "uniqueID": "09e14d64-8a6d-45a6-8d79-8a4b53c96a27",
-    "ioValues": [
+  "atomType": "Molecule",
+  "x": 0,
+  "y": 0,
+  "uniqueID": "09e14d64-8a6d-45a6-8d79-8a4b53c96a27",
+  "name": "CodeTest",
+  "ioValues": [
+    {
+      "name": "Input (1)",
+      "ioValue": "__GEOMETRY_INPUT__"
+    }
+  ],
+  "topLevel": true,
+  "allAtoms": [
+    {
+      "atomType": "Output",
+      "x": 0.98,
+      "y": 0.5,
+      "uniqueID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4",
+      "ioValues": [
         {
-            "name": "Input (1)",
-            "ioValue": 90,
-            "currentEquation": null
+          "name": "number or geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
         }
-    ],
-    "topLevel": true,
-    "allAtoms": [
+      ]
+    },
+    {
+      "atomType": "Rectangle",
+      "x": 0.12825520833333334,
+      "y": 0.2619047619047619,
+      "uniqueID": "faf25742-ee63-4660-93f6-61373f099b54",
+      "ioValues": [
         {
-            "atomType": "Output",
-            "name": "Output",
-            "x": 0.98,
-            "y": 0.5,
-            "uniqueID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4",
-            "ioValues": []
+          "name": "x length",
+          "ioValue": 50
         },
         {
-            "atomType": "Rectangle",
-            "name": "Rectangle",
-            "x": 0.12825520833333334,
-            "y": 0.2619047619047619,
-            "uniqueID": "faf25742-ee63-4660-93f6-61373f099b54",
-            "ioValues": [
-                {
-                    "name": "x length",
-                    "ioValue": 50,
-                    "currentEquation": null
-                },
-                {
-                    "name": "y length",
-                    "ioValue": 10,
-                    "currentEquation": null
-                }
-            ]
-        },
-        {
-            "atomType": "Extrude",
-            "name": "Extrude",
-            "x": 0.5169270833333334,
-            "y": 0.3005952380952381,
-            "uniqueID": "902265eb-1e76-4c47-b407-c968ea10559e",
-            "ioValues": [
-                {
-                    "name": "height",
-                    "ioValue": 10,
-                    "currentEquation": null
-                }
-            ]
-        },
-        {
-            "atomType": "Code",
-            "name": "Code",
-            "x": 0.576171875,
-            "y": 0.8720238095238095,
-            "uniqueID": "69571ba7-0e6c-4202-be46-6d2d781d2d22",
-            "ioValues": [
-                {
-                    "name": "dist",
-                    "ioValue": 20,
-                    "currentEquation": null
-                },
-                {
-                    "name": "height",
-                    "ioValue": -10,
-                    "currentEquation": null
-                }
-            ],
-            "codeVersion": 1,
-            "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      //Takes the address and gets the shape from the library\n\n      let shape = library[inputShape]\n      console.log(\"custom code\")\n      console.log(library)\n      console.log(inputShape)\n\n      // call every library method provided to code molecules\n      const rotated = await Rotate(shape, 5, 10, dist)\n      const moved = await Move(shape, 0, 9, height)\n      const scaled = await Scale(shape, 0.7)\n      const assembled = await Assembly([shape, moved])\n      const inter = await Intersect(shape, moved)\n      const cut = await CutAssembly(shape, [scaled, moved])\n      const modifiedAssembly = await AssemblyMap(assembled, async (s) => {return await Rotate(s, 0, 10, 90)})\n      console.log(await AssemblyAsIterable(assembled))\n      console.log(GetBounds(shape))\n      const filleted = await Fillet(moved, 0.3)\n      const chamfered = await Chamfer(shape, 1)\n      return filleted\n      //return Assembly([modifiedAssembly, inter, cut, filleted])\n\n"
-        },
-        {
-            "atomType": "Move",
-            "name": "Move",
-            "x": 0.27473958333333337,
-            "y": 0.15773809523809523,
-            "uniqueID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2",
-            "ioValues": [
-                {
-                    "name": "xDist",
-                    "ioValue": 0,
-                    "currentEquation": null
-                },
-                {
-                    "name": "yDist",
-                    "ioValue": 90,
-                    "currentEquation": null
-                },
-                {
-                    "name": "zDist",
-                    "ioValue": 0,
-                    "currentEquation": null
-                }
-            ]
-        },
-        {
-            "atomType": "Input",
-            "name": "Input (1)",
-            "x": 0.024749999999999998,
-            "y": 0.75,
-            "uniqueID": "74766fec-7684-4e5d-b6d6-454afabaddfb",
-            "ioValues": [],
-            "type": "geometry"
-        },
-        {
-            "atomType": "Rectangle",
-            "name": "Rectangle",
-            "x": 0.14973958333333334,
-            "y": 0.7886904761904763,
-            "uniqueID": "90379be9-52a6-4840-8987-2e978c76a660",
-            "ioValues": [
-                {
-                    "name": "x length",
-                    "ioValue": 10,
-                    "currentEquation": null
-                },
-                {
-                    "name": "y length",
-                    "ioValue": 10,
-                    "currentEquation": null
-                }
-            ]
-        },
-        {
-            "atomType": "Fusion",
-            "name": "Fusion",
-            "x": 0.3352864583333333,
-            "y": 0.550595238095238,
-            "uniqueID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039",
-            "ioValues": [
-                {
-                    "name": "Shape 1",
-                    "ioValue": {
-                        "geometry": "rectangle-a07b1b89b61f8d67cbc665737c7cbe8f9379e278df9f3a5ebdedcdcd21acdce6",
-                        "dimension": "2D",
-                        "plane": {
-                            "origin": [
-                                0,
-                                0,
-                                0
-                            ],
-                            "xDir": [
-                                1,
-                                0,
-                                0
-                            ],
-                            "normal": [
-                                0,
-                                0,
-                                1
-                            ]
-                        },
-                        "color": "#aad7f2",
-                        "tags": [],
-                        "bom": []
-                    }
-                },
-                {
-                    "name": "Shape 2",
-                    "ioValue": {
-                        "geometry": "move-88e75486f380789b80febac0883ca83ce6a3703e600b2a5c874b8cb1f58e7b8d",
-                        "dimension": "2D",
-                        "plane": {
-                            "origin": [
-                                0,
-                                0,
-                                0
-                            ],
-                            "xDir": [
-                                1,
-                                0,
-                                0
-                            ],
-                            "normal": [
-                                0,
-                                0,
-                                1
-                            ]
-                        },
-                        "color": "#aad7f2",
-                        "tags": [],
-                        "bom": []
-                    }
-                }
-            ],
-            "unionType": "Fusion"
-        },
-        {
-            "atomType": "Move",
-            "name": "Move",
-            "x": 0.255859375,
-            "y": 0.8333333333333334,
-            "uniqueID": "c8cb90b7-edd2-48e8-9e6c-52cf5a762d5f",
-            "ioValues": [
-                {
-                    "name": "xDist",
-                    "ioValue": 0,
-                    "currentEquation": null
-                },
-                {
-                    "name": "yDist",
-                    "ioValue": 9,
-                    "currentEquation": null
-                },
-                {
-                    "name": "zDist",
-                    "ioValue": 0,
-                    "currentEquation": null
-                }
-            ]
-        },
-        {
-            "atomType": "Assembly",
-            "name": "Assembly",
-            "x": 0.5221354166666666,
-            "y": 0.6142857142857143,
-            "uniqueID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9",
-            "ioValues": [
-                {
-                    "name": "Shape 1",
-                    "ioValue": {
-                        "geometry": "extrude-d5a6aa784db837300291061b9dae684f8ecd9218b3ea1dc7c6ece4c44b982dee",
-                        "tags": [],
-                        "bom": [],
-                        "plane": {
-                            "origin": [
-                                0,
-                                0,
-                                0
-                            ],
-                            "xDir": [
-                                1,
-                                0,
-                                0
-                            ],
-                            "normal": [
-                                0,
-                                0,
-                                1
-                            ]
-                        },
-                        "color": "#aad7f2",
-                        "dimension": "3D"
-                    }
-                },
-                {
-                    "name": "Shape 3",
-                    "ioValue": {
-                        "geometry": "extrude-e220982ecd854ba52b52247623e581e06b3bc1ae58627b089ffc6bec23dc705c",
-                        "dimension": "3D",
-                        "plane": {
-                            "origin": [
-                                0,
-                                0,
-                                0
-                            ],
-                            "xDir": [
-                                1,
-                                0,
-                                0
-                            ],
-                            "normal": [
-                                0,
-                                0,
-                                1
-                            ]
-                        },
-                        "color": "#aad7f2",
-                        "tags": [],
-                        "bom": []
-                    }
-                }
-            ]
-        },
-        {
-            "atomType": "Extrude",
-            "name": "Extrude",
-            "x": 0.37109375,
-            "y": 0.86,
-            "uniqueID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
-            "ioValues": [
-                {
-                    "name": "height",
-                    "ioValue": 20,
-                    "currentEquation": "20"
-                }
-            ]
+          "name": "y length",
+          "ioValue": 10
         }
-    ],
-    "allConnectors": [
+      ]
+    },
+    {
+      "atomType": "Extrude",
+      "x": 0.5169270833333334,
+      "y": 0.3005952380952381,
+      "uniqueID": "902265eb-1e76-4c47-b407-c968ea10559e",
+      "ioValues": [
         {
-            "ap1Name": "geometry",
-            "ap2Name": "geometry",
-            "ap1ID": "faf25742-ee63-4660-93f6-61373f099b54",
-            "ap2ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2"
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
         },
         {
-            "ap1Name": "geometry",
-            "ap2Name": "Shape 1",
-            "ap1ID": "faf25742-ee63-4660-93f6-61373f099b54",
-            "ap2ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039"
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "number or geometry",
-            "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
-            "ap2ID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4"
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "Shape 1",
-            "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
-            "ap2ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9"
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "inputShape",
-            "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
-            "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "geometry",
-            "ap1ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2",
-            "ap2ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85"
-        },
-        {
-            "ap1Name": "number or geometry",
-            "ap2Name": "yDist",
-            "ap1ID": "74766fec-7684-4e5d-b6d6-454afabaddfb",
-            "ap2ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2"
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "geometry",
-            "ap1ID": "90379be9-52a6-4840-8987-2e978c76a660",
-            "ap2ID": "c8cb90b7-edd2-48e8-9e6c-52cf5a762d5f"
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "geometry",
-            "ap1ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039",
-            "ap2ID": "902265eb-1e76-4c47-b407-c968ea10559e"
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "Shape 2",
-            "ap1ID": "c8cb90b7-edd2-48e8-9e6c-52cf5a762d5f",
-            "ap2ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039"
-        },
-        {
-            "ap1Name": "geometry",
-            "ap2Name": "Shape 3",
-            "ap1ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
-            "ap2ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9"
+          "name": "height",
+          "ioValue": 10
         }
-    ],
-    "unitsKey": "MM",
-    "fileTypeVersion": 1,
-    "compiledBom": [],
-    "filetypeVersion": 1
+      ]
+    },
+    {
+      "atomType": "Code",
+      "x": 0.576171875,
+      "y": 0.8720238095238095,
+      "uniqueID": "69571ba7-0e6c-4202-be46-6d2d781d2d22",
+      "ioValues": [
+        {
+          "name": "dist",
+          "ioValue": 20
+        },
+        {
+          "name": "height",
+          "ioValue": -10
+        },
+        {
+          "name": "inputShape",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ],
+      "codeVersion": 1,
+      "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      //Takes the address and gets the shape from the library\n\n      let shape = library[inputShape]\n      console.log(\"custom code\")\n      console.log(library)\n      console.log(inputShape)\n\n      // call every library method provided to code molecules\n      const rotated = await Rotate(shape, 5, 10, dist)\n      const moved = await Move(shape, 0, 9, height)\n      const scaled = await Scale(shape, 0.7)\n      const assembled = await Assembly([shape, moved])\n      const inter = await Intersect(shape, moved)\n      const cut = await CutAssembly(shape, [scaled, moved])\n      const modifiedAssembly = await AssemblyMap(assembled, async (s) => {return await Rotate(s, 0, 10, 90)})\n      console.log(await AssemblyAsIterable(assembled))\n      console.log(GetBounds(shape))\n      const filleted = await Fillet(moved, 0.3)\n      const chamfered = await Chamfer(shape, 1)\n      return filleted\n      //return Assembly([modifiedAssembly, inter, cut, filleted])\n\n"
+    },
+    {
+      "atomType": "Move",
+      "x": 0.27473958333333337,
+      "y": 0.15773809523809523,
+      "uniqueID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "xDist",
+          "ioValue": 0
+        },
+        {
+          "name": "yDist",
+          "ioValue": 90
+        },
+        {
+          "name": "zDist",
+          "ioValue": 0
+        }
+      ]
+    },
+    {
+      "atomType": "Input",
+      "x": 0.025384615384615384,
+      "y": 0.15384615384615385,
+      "uniqueID": "74766fec-7684-4e5d-b6d6-454afabaddfb",
+      "name": "Input (1)",
+      "type": "geometry"
+    },
+    {
+      "atomType": "Rectangle",
+      "x": 0.14973958333333334,
+      "y": 0.7886904761904763,
+      "uniqueID": "90379be9-52a6-4840-8987-2e978c76a660",
+      "ioValues": [
+        {
+          "name": "x length",
+          "ioValue": 10
+        },
+        {
+          "name": "y length",
+          "ioValue": 10
+        }
+      ]
+    },
+    {
+      "atomType": "Fusion",
+      "x": 0.3352864583333333,
+      "y": 0.550595238095238,
+      "uniqueID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039",
+      "ioValues": [
+        {
+          "name": "Shape 1",
+          "ioValue": {
+            "geometry": "rectangle-50-10",
+            "dimension": "2D",
+            "plane": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "xDir": [
+                1,
+                0,
+                0
+              ],
+              "normal": [
+                0,
+                0,
+                1
+              ]
+            },
+            "color": "#aad7f2",
+            "tags": [],
+            "bom": []
+          }
+        },
+        {
+          "name": "Shape 2",
+          "ioValue": {
+            "geometry": "move-rectangle-10-10-0-9-0",
+            "dimension": "2D",
+            "plane": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "xDir": [
+                1,
+                0,
+                0
+              ],
+              "normal": [
+                0,
+                0,
+                1
+              ]
+            },
+            "color": "#aad7f2",
+            "tags": [],
+            "bom": []
+          }
+        }
+      ],
+      "unionType": "Fusion"
+    },
+    {
+      "atomType": "Move",
+      "x": 0.255859375,
+      "y": 0.8333333333333334,
+      "uniqueID": "c8cb90b7-edd2-48e8-9e6c-52cf5a762d5f",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "xDist",
+          "ioValue": 0
+        },
+        {
+          "name": "yDist",
+          "ioValue": 9
+        },
+        {
+          "name": "zDist",
+          "ioValue": 0
+        }
+      ]
+    },
+    {
+      "atomType": "Assembly",
+      "x": 0.5221354166666666,
+      "y": 0.6142857142857143,
+      "uniqueID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9",
+      "ioValues": [
+        {
+          "name": "Shape 1",
+          "ioValue": null
+        },
+        {
+          "name": "Shape 3",
+          "ioValue": null
+        }
+      ]
+    },
+    {
+      "atomType": "Extrude",
+      "x": 0.37109375,
+      "y": 0.86,
+      "uniqueID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "height",
+          "ioValue": 20
+        }
+      ]
+    }
+  ],
+  "allConnectors": [
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "faf25742-ee63-4660-93f6-61373f099b54",
+      "ap2ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2"
+    },
+    {
+      "ap2Name": "Shape 1",
+      "ap1ID": "faf25742-ee63-4660-93f6-61373f099b54",
+      "ap2ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039"
+    },
+    {
+      "ap2Name": "number or geometry",
+      "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
+      "ap2ID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4"
+    },
+    {
+      "ap2Name": "Shape 1",
+      "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
+      "ap2ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9"
+    },
+    {
+      "ap2Name": "inputShape",
+      "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
+      "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2",
+      "ap2ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85"
+    },
+    {
+      "ap2Name": "yDist",
+      "ap1ID": "74766fec-7684-4e5d-b6d6-454afabaddfb",
+      "ap2ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "90379be9-52a6-4840-8987-2e978c76a660",
+      "ap2ID": "c8cb90b7-edd2-48e8-9e6c-52cf5a762d5f"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039",
+      "ap2ID": "902265eb-1e76-4c47-b407-c968ea10559e"
+    },
+    {
+      "ap2Name": "Shape 2",
+      "ap1ID": "c8cb90b7-edd2-48e8-9e6c-52cf5a762d5f",
+      "ap2ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039"
+    },
+    {
+      "ap2Name": "Shape 3",
+      "ap1ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
+      "ap2ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9"
+    }
+  ],
+  "unitsKey": "MM",
+  "fileTypeVersion": 1,
+  "filetypeVersion": 1
 }
