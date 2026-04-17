@@ -244,6 +244,22 @@
           "ioValue": 20
         }
       ]
+    },
+    {
+      "atomType": "Extrude",
+      "x": 0.4166666666666667,
+      "y": 0.25142857142857145,
+      "uniqueID": "id-39",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "height",
+          "ioValue": 10
+        }
+      ]
     }
   ],
   "allConnectors": [
@@ -256,6 +272,11 @@
       "ap2Name": "Shape 1",
       "ap1ID": "faf25742-ee63-4660-93f6-61373f099b54",
       "ap2ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "faf25742-ee63-4660-93f6-61373f099b54",
+      "ap2ID": "id-39"
     },
     {
       "ap2Name": "number or geometry",
