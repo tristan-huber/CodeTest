@@ -69,10 +69,6 @@
         {
           "name": "height",
           "ioValue": -10
-        },
-        {
-          "name": "inputShape",
-          "ioValue": "__GEOMETRY_INPUT__"
         }
       ],
       "codeVersion": 1,
