@@ -42,8 +42,8 @@
     },
     {
       "atomType": "Extrude",
-      "x": 0.5169270833333334,
-      "y": 0.3005952380952381,
+      "x": 0.41015624999999994,
+      "y": 0.4226190476190476,
       "uniqueID": "902265eb-1e76-4c47-b407-c968ea10559e",
       "ioValues": [
         {
@@ -58,8 +58,8 @@
     },
     {
       "atomType": "Code",
-      "x": 0.5746924428822495,
-      "y": 0.8665105386416861,
+      "x": 0.6087239583333334,
+      "y": 0.7410714285714286,
       "uniqueID": "69571ba7-0e6c-4202-be46-6d2d781d2d22",
       "ioValues": [
         {
@@ -72,7 +72,7 @@
         }
       ],
       "codeVersion": 1,
-      "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      //Takes the address and gets the shape from the library\n\n      let shape = library[inputShape]\n      console.log(\"custom code\")\n      console.log(library)\n      console.log(inputShape)\n\n      // call every library method provided to code molecules\n      const rotated = await Rotate(shape, 5, 10, dist)\n      const moved = await Move(shape, 0, 9, height)\n      const scaled = await Scale(shape, 0.7)\n      const assembled = await Assembly([shape, moved])\n      const inter = await Intersect(shape, moved)\n      const cut = await CutAssembly(shape, [scaled, moved])\n      const modifiedAssembly = await AssemblyMap(assembled, async (s) => {return await Rotate(s, 0, 10, 90)})\n      console.log(await AssemblyAsIterable(assembled))\n      console.log(GetBounds(shape))\n      const filleted = await Fillet(moved, 0.3)\n      const chamfered = await Chamfer(shape, 1)\n      return filleted\n      //return Assembly([modifiedAssembly, inter, cut, filleted])\n\n"
+      "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      //Takes the address and gets the shape from the library\n\n      let shape = library[inputShape]\n      console.log(\"custom code\")\n      console.log(library)\n      console.log(inputShape)\n\n      replicad.chamfer(shape.geometry)\n\n      // call every library method provided to code molecules\n      const rotated = await Rotate(shape, 5, 10, dist)\n      const moved = await Move(shape, 0, 9, height)\n      const scaled = await Scale(shape, 0.7)\n      const assembled = await Assembly([shape, moved])\n      const inter = await Intersect(shape, moved)\n      const cut = await CutAssembly(shape, [scaled, moved])\n      const modifiedAssembly = await AssemblyMap(assembled, async (s) => {return await Rotate(s, 0, 10, 90)})\n      console.log(await AssemblyAsIterable(assembled))\n      console.log(GetBounds(shape))\n      const filleted = await Fillet(moved, 0.3)\n      const chamfered = await Chamfer(shape, 1)\n      return filleted\n      //return Assembly([modifiedAssembly, inter, cut, filleted])\n\n"
     },
     {
       "atomType": "Move",
@@ -124,8 +124,8 @@
     },
     {
       "atomType": "Fusion",
-      "x": 0.3352864583333333,
-      "y": 0.550595238095238,
+      "x": 0.2682291666666667,
+      "y": 0.5208333333333334,
       "uniqueID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039",
       "ioValues": [
         {
@@ -211,8 +211,8 @@
     },
     {
       "atomType": "Assembly",
-      "x": 0.5221354166666666,
-      "y": 0.6142857142857143,
+      "x": 0.6002604166666667,
+      "y": 0.3392857142857143,
       "uniqueID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9",
       "ioValues": [
         {
@@ -227,8 +227,8 @@
     },
     {
       "atomType": "Extrude",
-      "x": 0.4332682291666667,
-      "y": 0.5872801082543978,
+      "x": 0.4934895833333333,
+      "y": 0.16964285714285715,
       "uniqueID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
       "ioValues": [
         {
@@ -277,7 +277,7 @@
         }
       ],
       "codeVersion": 1,
-      "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"radius\", type: \"number\", defaultValue: 5 },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 }\n];\n\nlet importedShape = library[shape];\nlet newPlane = replicad.makePlane()\nlet circDraw = replicad.drawCircle(radius)\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(height)\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\nlet assembly = await Assembly([importedShape, cylObj]);\nreturn assembly;\n"
+      "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"radius\", type: \"number\", defaultValue: 5 },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 }\n];\n\nlet importedShape = library[shape];\nlet newPlane = replicad.makePlane()\nlet circDraw = replicad.drawCircle(radius)\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(height)\ncyl = cyl.translate([1,4,8])\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\nlet assembly = await Assembly([importedShape, cylObj]);\nreturn assembly;\n"
     }
   ],
   "allConnectors": [
@@ -310,6 +310,11 @@
       "ap2Name": "inputShape",
       "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
       "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
+    },
+    {
+      "ap2Name": "shape",
+      "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
+      "ap2ID": "id-43"
     },
     {
       "ap2Name": "geometry",
