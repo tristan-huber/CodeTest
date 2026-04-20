@@ -58,8 +58,8 @@
     },
     {
       "atomType": "Code",
-      "x": 0.576171875,
-      "y": 0.8720238095238095,
+      "x": 0.5746924428822495,
+      "y": 0.8665105386416861,
       "uniqueID": "69571ba7-0e6c-4202-be46-6d2d781d2d22",
       "ioValues": [
         {
@@ -69,6 +69,10 @@
         {
           "name": "height",
           "ioValue": -10
+        },
+        {
+          "name": "inputShape",
+          "ioValue": "__GEOMETRY_INPUT__"
         }
       ],
       "codeVersion": 1,
