@@ -67,12 +67,12 @@
           "ioValue": "__GEOMETRY_INPUT__"
         },
         {
-          "name": "chamfer",
-          "ioValue": 5
+          "name": "size",
+          "ioValue": 2
         }
       ],
       "interpreterVersion": 1,
-      "code": "\nclass AbundanceProps {\n  color: string = \"#ffffff\";\n  tags: string[] = [];\n  bom: string[] = [];\n  plane: replicad.Plane = new replicad.Plane([0, 0, 1], [0, 0, 0]);\n\n  merge(other: AbundanceProps): AbundanceProps {\n    const merged = new AbundanceProps();\n    merged.color = this.color;\n    merged.plane = this.plane;\n    merged.tags = [...new Set([...this.tags, ...other.tags])];\n    merged.bom = [...new Set([...this.bom, ...other.bom])];\n    return merged;\n  }\n}\nclass AbundanceObj<T extends replicad.AnyShape | replicad.Drawing> extends AbundanceProps {\n  geometry: T;\n\n  constructor(\n    geometry: T,\n    abundanceProps: AbundanceProps = new AbundanceProps(),\n  ) {\n    super();\n    Object.assign(this, abundanceProps);\n    this.geometry = geometry;\n  }\n}\n\nfunction run(\n  shape: AbundanceObj<replicad.AnyShape>[],\n  chamfer: number = 5,\n):\n  | AbundanceObj<replicad.AnyShape>[]\n  | AbundanceObj<replicad.Drawing>[]\n  | AbundanceObj<replicad.AnyShape | replicad.Drawing>\n  | replicad.AnyShape | replicad.Drawing\n  | replicad.AnyShape[] | replicad.Drawing[]\n  | number {\n\n  const foo: replicad.AnyShape = shape[0].geometry\n  return foo.chamfer(chamfer);\n}\n\n"
+      "code": "\nfunction run(shape: AbundanceObj<replicad.Shape3D>, size: number = 2) {\n  const chamfered = shape.geometry.chamfer(size);\n  return new AbundanceObj(chamfered, shape);\n}\n/*\nfunction run(\n  shape: AbundanceObj<replicad.AnyShape>[],\n  chamfer: number = 5,\n):\n  | AbundanceObj<replicad.AnyShape>[]\n  | AbundanceObj<replicad.Drawing>[]\n  | AbundanceObj<replicad.AnyShape | replicad.Drawing>\n  | replicad.AnyShape | replicad.Drawing\n  | replicad.AnyShape[] | replicad.Drawing[]\n  | number {\n\n  const foo: replicad.AnyShape = shape[0].geometry\n  return foo.chamfer(chamfer);\n}*/\n\n"
     },
     {
       "atomType": "Move",
