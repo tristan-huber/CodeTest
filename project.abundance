@@ -42,8 +42,8 @@
     },
     {
       "atomType": "Extrude",
-      "x": 0.41015624999999994,
-      "y": 0.4226190476190476,
+      "x": 0.39811197916666663,
+      "y": 0.6033254156769596,
       "uniqueID": "902265eb-1e76-4c47-b407-c968ea10559e",
       "ioValues": [
         {
@@ -71,8 +71,9 @@
           "ioValue": 2
         }
       ],
-      "codeVersion": 1,
-      "code": "\nfunction run(shape: AbundanceObj<replicad.Shape3D>, size: number = 2) {\n  const chamfered = shape.geometry.chamfer(size);\n  return new AbundanceObj(chamfered, shape);\n}\n/*\nfunction run(\n  shape: AbundanceObj<replicad.AnyShape>[],\n  chamfer: number = 5,\n):\n  | AbundanceObj<replicad.AnyShape>[]\n  | AbundanceObj<replicad.Drawing>[]\n  | AbundanceObj<replicad.AnyShape | replicad.Drawing>\n  | replicad.AnyShape | replicad.Drawing\n  | replicad.AnyShape[] | replicad.Drawing[]\n  | number {\n\n  const foo: replicad.AnyShape = shape[0].geometry\n  return foo.chamfer(chamfer);\n}*/\n\n"
+      "interpreterVersion": 1,
+      "code": "\nfunction run(shape: AbundanceObj<replicad.Shape3D>[], size: number = 2) {\n  const chamfered = shape[0].geometry.chamfer(size);\n  return new AbundanceObj(chamfered, shape[0]);\n}\n/*\nfunction run(\n  shape: AbundanceObj<replicad.AnyShape>[],\n  chamfer: number = 5,\n):\n  | AbundanceObj<replicad.AnyShape>[]\n  | AbundanceObj<replicad.Drawing>[]\n  | AbundanceObj<replicad.AnyShape | replicad.Drawing>\n  | replicad.AnyShape | replicad.Drawing\n  | replicad.AnyShape[] | replicad.Drawing[]\n  | number {\n\n  const foo: replicad.AnyShape = shape[0].geometry\n  return foo.chamfer(chamfer);\n}*/\n\n",
+      "compiledCode": "\"use strict\";\nfunction run(shape, size = 2) {\n    const chamfered = shape[0].geometry.chamfer(size);\n    return new AbundanceObj(chamfered, shape[0]);\n}\n/*\nfunction run(\n  shape: AbundanceObj<replicad.AnyShape>[],\n  chamfer: number = 5,\n):\n  | AbundanceObj<replicad.AnyShape>[]\n  | AbundanceObj<replicad.Drawing>[]\n  | AbundanceObj<replicad.AnyShape | replicad.Drawing>\n  | replicad.AnyShape | replicad.Drawing\n  | replicad.AnyShape[] | replicad.Drawing[]\n  | number {\n\n  const foo: replicad.AnyShape = shape[0].geometry\n  return foo.chamfer(chamfer);\n}*/\n"
     },
     {
       "atomType": "Move",
@@ -276,7 +277,7 @@
           "ioValue": 10
         }
       ],
-      "codeVersion": 1,
+      "interpreterVersion": 0,
       "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"radius\", type: \"number\", defaultValue: 5 },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 }\n];\n\nlet importedShape = library[shape];\nlet newPlane = replicad.makePlane()\nlet circDraw = replicad.drawCircle(radius)\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(height)\ncyl = cyl.translate([1,4,8])\n\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\nlet assembly = await Assembly([importedShape, cylObj]);\nreturn assembly;\n"
     }
   ],
@@ -310,6 +311,11 @@
       "ap2Name": "shape",
       "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
       "ap2ID": "id-43"
+    },
+    {
+      "ap2Name": "shape",
+      "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
+      "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
     },
     {
       "ap2Name": "geometry",

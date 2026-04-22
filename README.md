@@ -4,11 +4,6 @@
 
 ![](/project.svg)
 
-## Inputs
-
-- **Input (1)** (geometry)
-
-
 
 
  
