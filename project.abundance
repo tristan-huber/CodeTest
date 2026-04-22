@@ -71,7 +71,7 @@
           "ioValue": 2
         }
       ],
-      "interpreterVersion": 1,
+      "codeVersion": 1,
       "code": "\nfunction run(shape: AbundanceObj<replicad.Shape3D>, size: number = 2) {\n  const chamfered = shape.geometry.chamfer(size);\n  return new AbundanceObj(chamfered, shape);\n}\n/*\nfunction run(\n  shape: AbundanceObj<replicad.AnyShape>[],\n  chamfer: number = 5,\n):\n  | AbundanceObj<replicad.AnyShape>[]\n  | AbundanceObj<replicad.Drawing>[]\n  | AbundanceObj<replicad.AnyShape | replicad.Drawing>\n  | replicad.AnyShape | replicad.Drawing\n  | replicad.AnyShape[] | replicad.Drawing[]\n  | number {\n\n  const foo: replicad.AnyShape = shape[0].geometry\n  return foo.chamfer(chamfer);\n}*/\n\n"
     },
     {
@@ -276,7 +276,7 @@
           "ioValue": 10
         }
       ],
-      "interpreterVersion": 0,
+      "codeVersion": 1,
       "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"radius\", type: \"number\", defaultValue: 5 },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 }\n];\n\nlet importedShape = library[shape];\nlet newPlane = replicad.makePlane()\nlet circDraw = replicad.drawCircle(radius)\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(height)\ncyl = cyl.translate([1,4,8])\n\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\nlet assembly = await Assembly([importedShape, cylObj]);\nreturn assembly;\n"
     }
   ],
