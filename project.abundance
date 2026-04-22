@@ -72,7 +72,7 @@
         }
       ],
       "interpreterVersion": 1,
-      "code": "\nfunction run(shape: AbundanceObj<replicad.Drawing>[], size: number = 2) {  \n  const threeD = shape[0].geometry\n  return threeD;\n}\n/*\nfunction run(\n  shape: AbundanceObj<replicad.AnyShape>[],\n  chamfer: number = 5,\n):\n  | AbundanceObj<replicad.AnyShape>[]\n  | AbundanceObj<replicad.Drawing>[]\n  | AbundanceObj<replicad.AnyShape | replicad.Drawing>\n  | replicad.AnyShape | replicad.Drawing\n  | replicad.AnyShape[] | replicad.Drawing[]\n  | number {\n\n  const foo: replicad.AnyShape = shape[0].geometry\n  return foo.chamfer(chamfer);\n}*/\n\n",
+      "code": "\nfunction run(shape: Assembly, size: number = 2) {  \n  const threeD = shape[0].geometry\n  return threeD;\n}\n/*\nfunction run(\n  shape: AbundanceObj<replicad.AnyShape>[],\n  chamfer: number = 5,\n):\n  | AbundanceObj<replicad.AnyShape>[]\n  | AbundanceObj<replicad.Drawing>[]\n  | AbundanceObj<replicad.AnyShape | replicad.Drawing>\n  | replicad.AnyShape | replicad.Drawing\n  | replicad.AnyShape[] | replicad.Drawing[]\n  | number {\n\n  const foo: replicad.AnyShape = shape[0].geometry\n  return foo.chamfer(chamfer);\n}*/\n\n",
       "compiledCode": "\"use strict\";\nfunction run(shape, size = 2) {\n    const threeD = shape[0].geometry;\n    return threeD;\n}\n/*\nfunction run(\n  shape: AbundanceObj<replicad.AnyShape>[],\n  chamfer: number = 5,\n):\n  | AbundanceObj<replicad.AnyShape>[]\n  | AbundanceObj<replicad.Drawing>[]\n  | AbundanceObj<replicad.AnyShape | replicad.Drawing>\n  | replicad.AnyShape | replicad.Drawing\n  | replicad.AnyShape[] | replicad.Drawing[]\n  | number {\n\n  const foo: replicad.AnyShape = shape[0].geometry\n  return foo.chamfer(chamfer);\n}*/\n"
     },
     {
