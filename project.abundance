@@ -76,8 +76,8 @@
         }
       ],
       "interpreterVersion": 1,
-      "code": "\nfunction run(shape: AbundanceObj[], size: number = 2, height: number = 5) {\n  console.log(\"shape in code atom: \")\n  console.log(shape)\n\n  for (let leaf of shape) {\n    if (leaf.geometry instanceof replicad._3DShape) {\n      leaf.geometry = leaf.geometry.fillet(size).translate(10,0,0)\n    }\n  }\n\n  return shape;\n}\n\n\n",
-      "compiledCode": "\"use strict\";\nfunction run(shape, size = 2, height = 5) {\n    console.log(\"shape in code atom: \");\n    console.log(shape);\n    for (let leaf of shape) {\n        if (leaf.geometry instanceof replicad._3DShape) {\n            leaf.geometry = leaf.geometry.fillet(size).translate(10, 0, 0);\n        }\n    }\n    return shape;\n}\n"
+      "code": "\nfunction run(shape: Assembly, size: number = 2, height: number = 5) {\n  console.log(\"shape in code atom: \")\n  console.log(shape)\n\n  console.log(shape.is2D());\n\n  for (let leaf of shape) {\n    if (leaf.geometry instanceof replicad._3DShape) {\n      leaf.geometry = leaf.geometry.chamfer(size).translate(10,0,0)\n    }\n  }\n\n  return shape;\n}\n\n\n",
+      "compiledCode": "\"use strict\";\nfunction run(shape, size = 2, height = 5) {\n    console.log(\"shape in code atom: \");\n    console.log(shape);\n    console.log(shape.is2D());\n    for (let leaf of shape) {\n        if (leaf.geometry instanceof replicad._3DShape) {\n            leaf.geometry = leaf.geometry.chamfer(size).translate(10, 0, 0);\n        }\n    }\n    return shape;\n}\n"
     },
     {
       "atomType": "Move",
