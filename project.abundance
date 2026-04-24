@@ -63,21 +63,22 @@
       "uniqueID": "69571ba7-0e6c-4202-be46-6d2d781d2d22",
       "ioValues": [
         {
-          "name": "size",
-          "ioValue": 2
-        },
-        {
-          "name": "height",
-          "ioValue": 5
-        },
-        {
           "name": "shape",
           "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "count",
+          "ioValue": 4
+        },
+        {
+          "name": "offset",
+          "ioValue": 5,
+          "currentEquation": "5"
         }
       ],
       "interpreterVersion": 1,
-      "code": "\nfunction run(shape: Assembly, size: number = 2, height: number = 5) {\n  console.log(\"shape in code atom: \")\n  console.log(shape)\n\n  console.log(shape.is2D());\n\n  for (let leaf of shape) {\n    if (leaf.geometry instanceof replicad._3DShape) {\n      leaf.geometry = leaf.geometry.chamfer(size).translate(10,0,0)\n    }\n  }\n\n  return shape;\n}\n\n\n",
-      "compiledCode": "\"use strict\";\nfunction run(shape, size = 2, height = 5) {\n    console.log(\"shape in code atom: \");\n    console.log(shape);\n    console.log(shape.is2D());\n    for (let leaf of shape) {\n        if (leaf.geometry instanceof replicad._3DShape) {\n            leaf.geometry = leaf.geometry.chamfer(size).translate(10, 0, 0);\n        }\n    }\n    return shape;\n}\n"
+      "code": "\nfunction run(shape: Assembly, count: number = 3, offset: number = 5) {\n  console.log(\"shape in code atom: \")\n\n  if (count == 0) {\n    return []\n  }\n  const isReversed = count < 0;\n  if (isReversed) {\n    offset = -1 * offset\n  }\n\n  const result = [shape]\n  for (let i = 1; i < count; i++) {\n    for (const leaf of shape) {\n      leaf.geometry = leaf.geometry.translate(offset, 0, 0)\n    }\n    result.push(shape)\n    console.log(result)\n  }\n\n  return result;\n}\n\n\n",
+      "compiledCode": "\"use strict\";\nfunction run(shape, count = 3, offset = 5) {\n    console.log(\"shape in code atom: \");\n    if (count == 0) {\n        return [];\n    }\n    const isReversed = count < 0;\n    if (isReversed) {\n        offset = -1 * offset;\n    }\n    const result = [shape];\n    for (let i = 1; i < count; i++) {\n        for (const leaf of shape) {\n            leaf.geometry = leaf.geometry.translate(offset, 0, 0);\n        }\n        result.push(shape);\n        console.log(result);\n    }\n    return result;\n}\n"
     },
     {
       "atomType": "Move",
