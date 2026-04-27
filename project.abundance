@@ -300,8 +300,7 @@
         },
         {
           "name": "offset",
-          "ioValue": 67,
-          "currentEquation": "67"
+          "ioValue": 67
         }
       ],
       "interpreterVersion": 1,
