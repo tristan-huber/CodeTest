@@ -72,8 +72,8 @@
         }
       ],
       "interpreterVersion": 1,
-      "code": "// Right-of takes two atoms and places the second against the right\n// edge of the first\n\n// TODO: vector input to set direction instead of simple heading\n\nfunction totalBounds(part: Assembly): BoundingBox | BoundingBox2d {\n  let bounds: BoundingBox | BoundingBox2d |  undefined = undefined;\n  part.onLeafs((leaf) => {\n    if (bounds == undefined) {\n      bounds = leaf.geometry.boundingBox;\n    } else {\n      bounds.add(leaf.geometry.boundingBox)\n    }\n    return leaf;\n  });\n  return bounds;\n}\n\n\nfunction run(basisPart: Assembly, movedPart: Assembly) {\n  console.log(\"shape in code atom: \")\n\n  if (!basisPart || !movedPart) {\n    throw new Error(\"Missing required shape input\")\n  }\n\n  if (basisPart.is2D() != movedPart.is2D()) {\n    throw new Error(\"Input shapes must be of the same dimension. Both 2D or both 3D.\")\n  }\n\n  const basisBounds = totalBounds(basisPart)\n  const movedBounds = totalBounds(movedPart)\n\n  const translate = movedBounds.left - basisBounds.right;\n\n  movedPart.onLeafs((leaf) => {\n    leaf.geometry = leaf.geometry.translate(translate, 0, 0)\n    return leaf;\n  })\n\n  return movedPart;\n}\n\n\n",
-      "compiledCode": "\"use strict\";\n// Right-of takes two atoms and places the second against the right\n// edge of the first\n// TODO: vector input to set direction instead of simple heading\nfunction totalBounds(part) {\n    let bounds = undefined;\n    part.onLeafs((leaf) => {\n        if (bounds == undefined) {\n            bounds = leaf.geometry.boundingBox;\n        }\n        else {\n            bounds.add(leaf.geometry.boundingBox);\n        }\n        return leaf;\n    });\n    return bounds;\n}\nfunction run(basisPart, movedPart) {\n    console.log(\"shape in code atom: \");\n    if (!basisPart || !movedPart) {\n        throw new Error(\"Missing required shape input\");\n    }\n    if (basisPart.is2D() != movedPart.is2D()) {\n        throw new Error(\"Input shapes must be of the same dimension. Both 2D or both 3D.\");\n    }\n    const basisBounds = totalBounds(basisPart);\n    const movedBounds = totalBounds(movedPart);\n    const translate = movedBounds.left - basisBounds.right;\n    movedPart.onLeafs((leaf) => {\n        leaf.geometry = leaf.geometry.translate(translate, 0, 0);\n        return leaf;\n    });\n    return movedPart;\n}\n"
+      "code": "// Right-of takes two atoms and places the second against the right\n// edge of the first\n\n// TODO: vector input to set direction instead of simple heading\n\nfunction totalBounds(part: Assembly): BoundingBox | BoundingBox2d {\n  let bounds: BoundingBox | BoundingBox2d |  undefined = undefined;\n  part.onLeafs((leaf) => {\n    if (bounds == undefined) {\n      bounds = leaf.geometry.boundingBox;\n    } else {\n      bounds.add(leaf.geometry.boundingBox)\n    }\n    return leaf;\n  });\n  return bounds;\n}\n\n\nfunction run(basisPart: Assembly, movedPart: Assembly) {\n  console.log(\"shape in code atom: \")\n\n  if (!basisPart || !movedPart) {\n    throw new Error(\"Missing required shape input\")\n  }\n\n  if (basisPart.is2D() != movedPart.is2D()) {\n    throw new Error(\"Input shapes must be of the same dimension. Both 2D or both 3D.\")\n  }\n\n  const basisBounds = totalBounds(basisPart)\n  const movedBounds = totalBounds(movedPart)\n\n  const translate = movedBounds.left - basisBounds.right;\n\n  movedPart.onLeafs((leaf) => {\n    leaf.geometry = leaf.geometry.translate(translate, 0, 0)\n    return leaf;\n  })\n  console.log(movedPart)\n\n  return movedPart;\n}\n\n\n",
+      "compiledCode": "\"use strict\";\n// Right-of takes two atoms and places the second against the right\n// edge of the first\n// TODO: vector input to set direction instead of simple heading\nfunction totalBounds(part) {\n    let bounds = undefined;\n    part.onLeafs((leaf) => {\n        if (bounds == undefined) {\n            bounds = leaf.geometry.boundingBox;\n        }\n        else {\n            bounds.add(leaf.geometry.boundingBox);\n        }\n        return leaf;\n    });\n    return bounds;\n}\nfunction run(basisPart, movedPart) {\n    console.log(\"shape in code atom: \");\n    if (!basisPart || !movedPart) {\n        throw new Error(\"Missing required shape input\");\n    }\n    if (basisPart.is2D() != movedPart.is2D()) {\n        throw new Error(\"Input shapes must be of the same dimension. Both 2D or both 3D.\");\n    }\n    const basisBounds = totalBounds(basisPart);\n    const movedBounds = totalBounds(movedPart);\n    const translate = movedBounds.left - basisBounds.right;\n    movedPart.onLeafs((leaf) => {\n        leaf.geometry = leaf.geometry.translate(translate, 0, 0);\n        return leaf;\n    });\n    console.log(movedPart);\n    return movedPart;\n}\n"
     },
     {
       "atomType": "Move",
@@ -341,6 +341,11 @@
       "ap2ID": "id-89"
     },
     {
+      "ap2Name": "movedPart",
+      "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
+      "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
+    },
+    {
       "ap2Name": "geometry",
       "ap1ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2",
       "ap2ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85"
@@ -369,6 +374,11 @@
       "ap2Name": "Shape 3",
       "ap1ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
       "ap2ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9"
+    },
+    {
+      "ap2Name": "basisPart",
+      "ap1ID": "id-39",
+      "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
     }
   ],
   "unitsKey": "MM",
