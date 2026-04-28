@@ -315,8 +315,7 @@
         },
         {
           "name": "radius",
-          "ioValue": 1,
-          "currentEquation": "1"
+          "ioValue": 0
         },
         {
           "name": "filterShapes",
@@ -475,11 +474,6 @@
       "ap2Name": "geometry",
       "ap1ID": "id-148",
       "ap2ID": "id-152"
-    },
-    {
-      "ap2Name": "filterShapes",
-      "ap1ID": "id-152",
-      "ap2ID": "id-138"
     }
   ],
   "unitsKey": "MM",
