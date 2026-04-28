@@ -219,10 +219,6 @@
         {
           "name": "Shape 1",
           "ioValue": null
-        },
-        {
-          "name": "Shape 3",
-          "ioValue": null
         }
       ]
     },
@@ -381,6 +377,13 @@
           "ioValue": 2
         }
       ]
+    },
+    {
+      "atomType": "Constant",
+      "x": 0.06966145833333333,
+      "y": 0.7714285714285715,
+      "uniqueID": "id-216",
+      "value": 3
     }
   ],
   "allConnectors": [
@@ -445,14 +448,14 @@
       "ap2ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039"
     },
     {
-      "ap2Name": "Shape 3",
-      "ap1ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
-      "ap2ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9"
+      "ap2Name": "basisPart",
+      "ap1ID": "id-39",
+      "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
     },
     {
       "ap2Name": "basisPart",
       "ap1ID": "id-39",
-      "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
+      "ap2ID": "id-138"
     },
     {
       "ap2Name": "number or geometry",
