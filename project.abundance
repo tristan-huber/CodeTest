@@ -58,8 +58,8 @@
     },
     {
       "atomType": "Code",
-      "x": 0.6223958333333334,
-      "y": 0.5011655011655012,
+      "x": 0.640625,
+      "y": 0.43356643356643354,
       "uniqueID": "69571ba7-0e6c-4202-be46-6d2d781d2d22",
       "ioValues": [
         {
@@ -282,8 +282,8 @@
     },
     {
       "atomType": "Code",
-      "x": 0.6223958333333334,
-      "y": 0.6576454668470907,
+      "x": 0.66015625,
+      "y": 0.6340326340326341,
       "uniqueID": "id-89",
       "ioValues": [
         {
@@ -302,6 +302,25 @@
       "interpreterVersion": 1,
       "code": "\nfunction run(shape: Assembly, count: number = 3, offset: number = 5) {\n  console.log(\"shape in code atom\")\n\n  if (count == 0) {\n    return []\n  }\n  const isReversed = count < 0;\n  if (isReversed) {\n    offset = -1 * offset\n  }\n  count = Math.abs(count)\n\n  const result = [shape]\n  for (let i = 1; i < count; i++) {\n\n    const temp = new Assembly(shape).onLeafs((leaf) => {\n      if (leaf.is2D()) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0)\n      } else if (leaf.geometry instanceof replicad._3DShape) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0, 0)\n      }\n      return leaf;\n    })\n\n    if (temp) {\n      result.push(temp)\n    }\n    console.warn(\"foo\")\n  }\n\n  return result;\n}\n\n\n",
       "compiledCode": "\"use strict\";\nfunction run(shape, count = 3, offset = 5) {\n    console.log(\"shape in code atom\");\n    if (count == 0) {\n        return [];\n    }\n    const isReversed = count < 0;\n    if (isReversed) {\n        offset = -1 * offset;\n    }\n    count = Math.abs(count);\n    const result = [shape];\n    for (let i = 1; i < count; i++) {\n        const temp = new Assembly(shape).onLeafs((leaf) => {\n            if (leaf.is2D()) {\n                leaf.geometry = leaf.geometry.translate(offset * i, 0);\n            }\n            else if (leaf.geometry instanceof replicad._3DShape) {\n                leaf.geometry = leaf.geometry.translate(offset * i, 0, 0);\n            }\n            return leaf;\n        });\n        if (temp) {\n            result.push(temp);\n        }\n        console.warn(\"foo\");\n    }\n    return result;\n}\n"
+    },
+    {
+      "atomType": "Code",
+      "x": 0.6666666666666666,
+      "y": 0.7972027972027973,
+      "uniqueID": "id-138",
+      "ioValues": [
+        {
+          "name": "basisPart",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "movedPart",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ],
+      "interpreterVersion": 1,
+      "code": "// Right-of takes two atoms and places the second against the right\n// edge of the first\n\n// TODO: vector input to set direction instead of simple heading\n\nfunction totalBounds(part: Assembly): replicad.BoundingBox | replicad.BoundingBox2d {\n  let bounds: replicad.BoundingBox | replicad.BoundingBox2d |  undefined = undefined;\n  part.onLeafs((leaf) => {\n    if (bounds == undefined) {\n      bounds = leaf.geometry.boundingBox;\n    } else {\n      //@ts-ignore\n      bounds.add(leaf.geometry.boundingBox)\n    }\n    return leaf;\n  });\n  if (bounds == undefined) {\n    throw Error(\"Recieved assembly with no leafs somehow\")\n  }\n  return bounds;\n}\n\n\nfunction run(basisPart: Assembly, movedPart: Assembly) {\n  if (!basisPart || !movedPart) {\n    throw new Error(\"Missing required shape input\")\n  }\n\n  if (basisPart.is2D() != movedPart.is2D()) {\n    throw new Error(\"Input shapes must be of the same dimension. Both 2D or both 3D.\")\n  }\n\n  const basisBounds = totalBounds(basisPart)\n  const movedBounds = totalBounds(movedPart)\n\n  const translate = movedBounds.bounds[0][0] - basisBounds.bounds[1][0];\n\n  movedPart.onLeafs((leaf) => {\n    leaf.geometry = leaf.geometry.translate(-translate, 0, 0)\n    return leaf;\n  })\n  console.log(basisBounds)\n  console.log(translate)\n  console.log(movedPart)\n\n  return movedPart;\n}\n\n\n",
+      "compiledCode": "\"use strict\";\n// Right-of takes two atoms and places the second against the right\n// edge of the first\n// TODO: vector input to set direction instead of simple heading\nfunction totalBounds(part) {\n    let bounds = undefined;\n    part.onLeafs((leaf) => {\n        if (bounds == undefined) {\n            bounds = leaf.geometry.boundingBox;\n        }\n        else {\n            //@ts-ignore\n            bounds.add(leaf.geometry.boundingBox);\n        }\n        return leaf;\n    });\n    if (bounds == undefined) {\n        throw Error(\"Recieved assembly with no leafs somehow\");\n    }\n    return bounds;\n}\nfunction run(basisPart, movedPart) {\n    if (!basisPart || !movedPart) {\n        throw new Error(\"Missing required shape input\");\n    }\n    if (basisPart.is2D() != movedPart.is2D()) {\n        throw new Error(\"Input shapes must be of the same dimension. Both 2D or both 3D.\");\n    }\n    const basisBounds = totalBounds(basisPart);\n    const movedBounds = totalBounds(movedPart);\n    const translate = movedBounds.bounds[0][0] - basisBounds.bounds[1][0];\n    movedPart.onLeafs((leaf) => {\n        leaf.geometry = leaf.geometry.translate(-translate, 0, 0);\n        return leaf;\n    });\n    console.log(basisBounds);\n    console.log(translate);\n    console.log(movedPart);\n    return movedPart;\n}\n"
     }
   ],
   "allConnectors": [
@@ -346,6 +365,11 @@
       "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
     },
     {
+      "ap2Name": "movedPart",
+      "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
+      "ap2ID": "id-138"
+    },
+    {
       "ap2Name": "geometry",
       "ap1ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2",
       "ap2ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85"
@@ -379,6 +403,11 @@
       "ap2Name": "basisPart",
       "ap1ID": "id-39",
       "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
+    },
+    {
+      "ap2Name": "basisPart",
+      "ap1ID": "id-39",
+      "ap2ID": "id-138"
     }
   ],
   "unitsKey": "MM",
