@@ -423,11 +423,6 @@
       "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
     },
     {
-      "ap2Name": "basisPart",
-      "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
-      "ap2ID": "id-138"
-    },
-    {
       "ap2Name": "geometry",
       "ap1ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2",
       "ap2ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85"
