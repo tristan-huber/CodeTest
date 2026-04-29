@@ -301,8 +301,8 @@
     },
     {
       "atomType": "Code",
-      "x": 0.650390625,
-      "y": 0.8485714285714286,
+      "x": 0.7021484375,
+      "y": 0.8430311231393776,
       "uniqueID": "id-138",
       "ioValues": [
         {
@@ -421,6 +421,11 @@
       "ap2Name": "movedPart",
       "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
       "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
+    },
+    {
+      "ap2Name": "basisPart",
+      "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
+      "ap2ID": "id-138"
     },
     {
       "ap2Name": "geometry",
