@@ -292,12 +292,13 @@
         },
         {
           "name": "offset",
-          "ioValue": 20
+          "ioValue": 12,
+          "currentEquation": "12"
         }
       ],
       "interpreterVersion": 1,
-      "code": "\nfunction run(shape: Assembly, count: number = 1, offset: number = 5) {\n  console.log(\"foo\")\n  if (count == 0) {\n    return []\n  }\n  const isReversed = count < 0;\n  if (isReversed) {\n    offset = -1 * offset\n  }\n  count = Math.abs(count)\n\n  const result = [shape]\n  for (let i = 1; i < count; i++) {\n    const movedCopy = new Assembly(shape).onLeafs((leaf) => {\n      if (leaf.is2D()) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0)\n      } else if (leaf.geometry instanceof replicad._3DShape) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0, 0)\n      }\n      return leaf;\n    })\n\n    if (movedCopy) {\n      result.push(movedCopy)\n    }\n  }\n\n  return result;\n}\n\n\n",
-      "compiledCode": "\"use strict\";\nfunction run(shape, count = 1, offset = 5) {\n    console.log(\"foo\");\n    if (count == 0) {\n        return [];\n    }\n    const isReversed = count < 0;\n    if (isReversed) {\n        offset = -1 * offset;\n    }\n    count = Math.abs(count);\n    const result = [shape];\n    for (let i = 1; i < count; i++) {\n        const movedCopy = new Assembly(shape).onLeafs((leaf) => {\n            if (leaf.is2D()) {\n                leaf.geometry = leaf.geometry.translate(offset * i, 0);\n            }\n            else if (leaf.geometry instanceof replicad._3DShape) {\n                leaf.geometry = leaf.geometry.translate(offset * i, 0, 0);\n            }\n            return leaf;\n        });\n        if (movedCopy) {\n            result.push(movedCopy);\n        }\n    }\n    return result;\n}\n"
+      "code": "\nfunction run(shape: Assembly, count: number = 1, offset: number = 5) {\n  console.log(\"foo\")\n  if (count == 0) {\n    return []\n  }\n  const isReversed = count < 0;\n  if (isReversed) {\n    offset = -1 * offset\n  }\n  count = Math.abs(count)\n\n  const result = [shape]\n  for (let i = 1; i < count; i++) {\n    const movedCopy = new Assembly(shape).onLeafs((leaf) => {\n      if (leaf.is2D()) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0)\n      } else if (leaf.geometry instanceof replicad._3DShape) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0, 0)\n      }\n      return leaf;\n    })\n\n    if (movedCopy) {\n      result.push(movedCopy)\n    }\n  }\n\n  return new Assembly({geometry: result});\n}\n\n\n",
+      "compiledCode": "\"use strict\";\nfunction run(shape, count = 1, offset = 5) {\n    console.log(\"foo\");\n    if (count == 0) {\n        return [];\n    }\n    const isReversed = count < 0;\n    if (isReversed) {\n        offset = -1 * offset;\n    }\n    count = Math.abs(count);\n    const result = [shape];\n    for (let i = 1; i < count; i++) {\n        const movedCopy = new Assembly(shape).onLeafs((leaf) => {\n            if (leaf.is2D()) {\n                leaf.geometry = leaf.geometry.translate(offset * i, 0);\n            }\n            else if (leaf.geometry instanceof replicad._3DShape) {\n                leaf.geometry = leaf.geometry.translate(offset * i, 0, 0);\n            }\n            return leaf;\n        });\n        if (movedCopy) {\n            result.push(movedCopy);\n        }\n    }\n    return new Assembly({ geometry: result });\n}\n"
     },
     {
       "atomType": "Code",
@@ -421,8 +422,7 @@
         },
         {
           "name": "i",
-          "ioValue": 1,
-          "currentEquation": "1"
+          "ioValue": 1
         }
       ],
       "topLevel": false,
