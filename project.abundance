@@ -517,6 +517,58 @@
       },
       "unitsKey": "Unitless",
       "fileTypeVersion": 1
+    },
+    {
+      "atomType": "Circle",
+      "x": 0.5260416666666667,
+      "y": 0.9028571428571429,
+      "uniqueID": "id-446",
+      "ioValues": [
+        {
+          "name": "diameter",
+          "ioValue": 10
+        }
+      ]
+    },
+    {
+      "atomType": "Difference",
+      "x": 0.5904947916666666,
+      "y": 0.8942857142857142,
+      "uniqueID": "id-449",
+      "ioValues": [
+        {
+          "name": "retain",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "remove",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ]
+    },
+    {
+      "atomType": "Rotate",
+      "x": 0.6419270833333334,
+      "y": 0.8514285714285714,
+      "uniqueID": "id-453",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "x-axis degrees",
+          "ioValue": 0
+        },
+        {
+          "name": "y-axis degrees",
+          "ioValue": 0
+        },
+        {
+          "name": "z-axis degrees",
+          "ioValue": 0
+        }
+      ]
     }
   ],
   "allConnectors": [
@@ -606,9 +658,24 @@
       "ap2ID": "id-148"
     },
     {
+      "ap2Name": "remove",
+      "ap1ID": "id-144",
+      "ap2ID": "id-449"
+    },
+    {
       "ap2Name": "geometry",
       "ap1ID": "id-148",
       "ap2ID": "id-152"
+    },
+    {
+      "ap2Name": "retain",
+      "ap1ID": "id-446",
+      "ap2ID": "id-449"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "id-449",
+      "ap2ID": "id-453"
     }
   ],
   "unitsKey": "MM",
