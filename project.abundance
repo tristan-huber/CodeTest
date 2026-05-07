@@ -355,15 +355,15 @@
       "uniqueID": "id-854",
       "ioValues": [
         {
-          "name": "Shape 2",
-          "ioValue": null
-        },
-        {
           "name": "Shape 3",
           "ioValue": null
         },
         {
           "name": "Shape 4",
+          "ioValue": null
+        },
+        {
+          "name": "Shape 5",
           "ioValue": null
         }
       ]
@@ -571,11 +571,6 @@
       "ap2ID": "id-606"
     },
     {
-      "ap2Name": "Shape 2",
-      "ap1ID": "id-785",
-      "ap2ID": "id-854"
-    },
-    {
       "ap2Name": "Shape 4",
       "ap1ID": "id-785",
       "ap2ID": "id-854"
@@ -587,6 +582,11 @@
     },
     {
       "ap2Name": "Shape 3",
+      "ap1ID": "id-922",
+      "ap2ID": "id-854"
+    },
+    {
+      "ap2Name": "Shape 5",
       "ap1ID": "id-922",
       "ap2ID": "id-854"
     }
