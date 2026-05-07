@@ -295,6 +295,21 @@
       ]
     },
     {
+      "atomType": "Code",
+      "x": 0.39192708333333337,
+      "y": 0.7771428571428571,
+      "uniqueID": "id-663",
+      "ioValues": [
+        {
+          "name": "end",
+          "ioValue": 3
+        }
+      ],
+      "interpreterVersion": 1,
+      "code": "\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end: number = 3) {\n  return new replicad.Vector([2,2,4])\n}\n",
+      "compiledCode": "\"use strict\";\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    return new replicad.Vector([2, 2, 4]);\n}\n"
+    },
+    {
       "atomType": "GitHubMolecule",
       "x": 0.7532552083333334,
       "y": 0.42857142857142855,
@@ -406,9 +421,9 @@
     },
     {
       "atomType": "Code",
-      "x": 0.39192708333333337,
-      "y": 0.7771428571428571,
-      "uniqueID": "id-663",
+      "x": 0.5123697916666666,
+      "y": 0.45714285714285713,
+      "uniqueID": "id-722",
       "ioValues": [
         {
           "name": "end",
