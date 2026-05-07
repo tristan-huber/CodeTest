@@ -296,18 +296,18 @@
     },
     {
       "atomType": "Code",
-      "x": 0.3899739583333333,
-      "y": 0.822857142857143,
+      "x": 0.3430989583333333,
+      "y": 0.8142857142857143,
       "uniqueID": "id-663",
       "ioValues": [
         {
           "name": "end",
-          "ioValue": 3
+          "ioValue": 2
         }
       ],
       "interpreterVersion": 1,
-      "code": "\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end: number = 3) {\n  return new replicad.Vector([2,2,4])\n}\n",
-      "compiledCode": "\"use strict\";\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    return new replicad.Vector([2, 2, 4]);\n}\n"
+      "code": "\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end: number = 3) {\n  console.log(\"foo\")\n  return replicad.makeVertex([2,2,4])\n}\n",
+      "compiledCode": "\"use strict\";\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    console.log(\"foo\");\n    return replicad.makeVertex([2, 2, 4]);\n}\n"
     },
     {
       "atomType": "Code",
