@@ -26,8 +26,8 @@
     },
     {
       "atomType": "Rectangle",
-      "x": 0.12825520833333334,
-      "y": 0.2619047619047619,
+      "x": 0.19921875,
+      "y": 0.23714285714285713,
       "uniqueID": "faf25742-ee63-4660-93f6-61373f099b54",
       "ioValues": [
         {
@@ -42,8 +42,8 @@
     },
     {
       "atomType": "Extrude",
-      "x": 0.39811197916666663,
-      "y": 0.6033254156769596,
+      "x": 0.3684895833333333,
+      "y": 0.10857142857142857,
       "uniqueID": "902265eb-1e76-4c47-b407-c968ea10559e",
       "ioValues": [
         {
@@ -58,8 +58,8 @@
     },
     {
       "atomType": "Code",
-      "x": 0.640625,
-      "y": 0.43356643356643354,
+      "x": 0.65234375,
+      "y": 0.14857142857142858,
       "uniqueID": "69571ba7-0e6c-4202-be46-6d2d781d2d22",
       "ioValues": [
         {
@@ -76,30 +76,6 @@
       "compiledCode": "\"use strict\";\n// Right-of takes two atoms and places the second against the right\n// edge of the first\n// TODO: vector input to set direction instead of simple heading\nfunction totalBounds(part) {\n    let bounds = undefined;\n    part.onLeafs((leaf) => {\n        if (bounds == undefined) {\n            bounds = leaf.geometry.boundingBox;\n        }\n        else {\n            //@ts-ignore\n            bounds.add(leaf.geometry.boundingBox);\n        }\n        return leaf;\n    });\n    if (bounds == undefined) {\n        throw Error(\"Recieved assembly with no leafs somehow\");\n    }\n    return bounds;\n}\nfunction run(basisPart, movedPart) {\n    if (!basisPart || !movedPart) {\n        throw new Error(\"Missing required shape input\");\n    }\n    if (basisPart.is2D() != movedPart.is2D()) {\n        throw new Error(\"Input shapes must be of the same dimension. Both 2D or both 3D.\");\n    }\n    const basisBounds = totalBounds(basisPart);\n    const movedBounds = totalBounds(movedPart);\n    const translate = movedBounds.bounds[0][0] - basisBounds.bounds[1][0];\n    movedPart.onLeafs((leaf) => {\n        leaf.geometry = leaf.geometry.translate(-translate, 0, 0);\n        return leaf;\n    });\n    console.log(basisBounds);\n    console.log(translate);\n    console.log(movedPart);\n    return movedPart;\n}\n"
     },
     {
-      "atomType": "Move",
-      "x": 0.27473958333333337,
-      "y": 0.15773809523809523,
-      "uniqueID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "xDist",
-          "ioValue": 0
-        },
-        {
-          "name": "yDist",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "zDist",
-          "ioValue": 0
-        }
-      ]
-    },
-    {
       "atomType": "Input",
       "x": 0.025384615384615384,
       "y": 0.15384615384615385,
@@ -108,25 +84,9 @@
       "type": "geometry"
     },
     {
-      "atomType": "Rectangle",
-      "x": 0.14973958333333334,
-      "y": 0.7886904761904763,
-      "uniqueID": "90379be9-52a6-4840-8987-2e978c76a660",
-      "ioValues": [
-        {
-          "name": "x length",
-          "ioValue": 10
-        },
-        {
-          "name": "y length",
-          "ioValue": 10
-        }
-      ]
-    },
-    {
       "atomType": "Fusion",
-      "x": 0.2682291666666667,
-      "y": 0.5208333333333334,
+      "x": 0.2669270833333333,
+      "y": 0.10571428571428572,
       "uniqueID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039",
       "ioValues": [
         {
@@ -157,9 +117,9 @@
           }
         },
         {
-          "name": "Shape 2",
+          "name": "Shape 3",
           "ioValue": {
-            "geometry": "move-rectangle-10-10-0-9-0",
+            "geometry": "rectangle-10-20",
             "dimension": "2D",
             "plane": {
               "origin": [
@@ -187,99 +147,9 @@
       "unionType": "Fusion"
     },
     {
-      "atomType": "Move",
-      "x": 0.255859375,
-      "y": 0.8333333333333334,
-      "uniqueID": "c8cb90b7-edd2-48e8-9e6c-52cf5a762d5f",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "xDist",
-          "ioValue": 0
-        },
-        {
-          "name": "yDist",
-          "ioValue": 9
-        },
-        {
-          "name": "zDist",
-          "ioValue": 0
-        }
-      ]
-    },
-    {
-      "atomType": "Assembly",
-      "x": 0.642578125,
-      "y": 0.23076923076923078,
-      "uniqueID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9",
-      "ioValues": [
-        {
-          "name": "Shape 1",
-          "ioValue": null
-        }
-      ]
-    },
-    {
-      "atomType": "Extrude",
-      "x": 0.5065104166666666,
-      "y": 0.13428571428571429,
-      "uniqueID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "height",
-          "ioValue": 20
-        }
-      ]
-    },
-    {
-      "atomType": "Extrude",
-      "x": 0.4166666666666667,
-      "y": 0.25142857142857145,
-      "uniqueID": "id-39",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "height",
-          "ioValue": 10
-        }
-      ]
-    },
-    {
       "atomType": "Code",
-      "x": 0.4375,
-      "y": 0.8700947225981055,
-      "uniqueID": "id-43",
-      "ioValues": [
-        {
-          "name": "shape",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "radius",
-          "ioValue": 5
-        },
-        {
-          "name": "height",
-          "ioValue": 10
-        }
-      ],
-      "interpreterVersion": 0,
-      "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"radius\", type: \"number\", defaultValue: 5 },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 }\n];\n\nlet importedShape = library[shape];\nlet newPlane = replicad.makePlane()\nlet circDraw = replicad.drawCircle(radius)\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(height)\ncyl = cyl.translate([1,4,8])\n\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\nlet assembly = await Assembly([importedShape, cylObj]);\nreturn assembly;\n"
-    },
-    {
-      "atomType": "Code",
-      "x": 0.66015625,
-      "y": 0.6340326340326341,
+      "x": 0.6490885416666667,
+      "y": 0.3685714285714286,
       "uniqueID": "id-89",
       "ioValues": [
         {
@@ -298,92 +168,6 @@
       "interpreterVersion": 1,
       "code": "\nfunction run(shape: Assembly, count: number = 1, offset: number = 5) {\n  console.log(\"foo\")\n  if (count == 0) {\n    return []\n  }\n  const isReversed = count < 0;\n  if (isReversed) {\n    offset = -1 * offset\n  }\n  count = Math.abs(count)\n\n  const result = [shape]\n  for (let i = 1; i < count; i++) {\n    const movedCopy = new Assembly(shape).onLeafs((leaf) => {\n      if (leaf.is2D()) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0)\n      } else if (leaf.geometry instanceof replicad._3DShape) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0, 0)\n      }\n      return leaf;\n    })\n\n    if (movedCopy) {\n      result.push(movedCopy)\n    }\n  }\n\n  const t = replicad.drawCircle(5);\n  return result;\n}\n\n\n",
       "compiledCode": "\"use strict\";\nfunction run(shape, count = 1, offset = 5) {\n    console.log(\"foo\");\n    if (count == 0) {\n        return [];\n    }\n    const isReversed = count < 0;\n    if (isReversed) {\n        offset = -1 * offset;\n    }\n    count = Math.abs(count);\n    const result = [shape];\n    for (let i = 1; i < count; i++) {\n        const movedCopy = new Assembly(shape).onLeafs((leaf) => {\n            if (leaf.is2D()) {\n                leaf.geometry = leaf.geometry.translate(offset * i, 0);\n            }\n            else if (leaf.geometry instanceof replicad._3DShape) {\n                leaf.geometry = leaf.geometry.translate(offset * i, 0, 0);\n            }\n            return leaf;\n        });\n        if (movedCopy) {\n            result.push(movedCopy);\n        }\n    }\n    const t = replicad.drawCircle(5);\n    return result;\n}\n"
-    },
-    {
-      "atomType": "Code",
-      "x": 0.7021484375,
-      "y": 0.8430311231393776,
-      "uniqueID": "id-138",
-      "ioValues": [
-        {
-          "name": "basisPart",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "fillet",
-          "ioValue": 1
-        },
-        {
-          "name": "filterShapes",
-          "ioValue": "__GEOMETRY_INPUT__"
-        }
-      ],
-      "interpreterVersion": 1,
-      "code": "// Fillet vertical edges in the input part. Optionally provide a selector volume\n// which filters the edges that are filleted.\n\n\nfunction run(basisPart: Assembly, fillet: number = 1, filterShapes: Assembly|undefined = undefined) {\n  console.log(basisPart)\n  const radius = fillet\n  if (!basisPart) {\n    throw new Error(\"Missing required shape input\")\n  }\n\n  if (basisPart.is2D()) {\n    throw new Error(\"2d shapes not supported right now\")\n  }\n\n  if (radius == 0) {\n    return basisPart;\n  }\n\n  if (radius < 0) {\n    throw new Error(\"Fillet radius must be 0 or positive\")\n  }\n\n  let filters: any[] = []\n  if (filterShapes instanceof Assembly) {\n    filterShapes.onLeafs((leaf) => {\n      const bounds = leaf.geometry.boundingBox.bounds;\n      filters.push(\n        (finder: replicad.Finder) => {\n          return finder.inBox(\n            bounds[0],\n            bounds[1]\n          )}\n      );\n\n      return leaf;\n    })\n  }\n\n  basisPart.onLeafs((leaf) => {\n    if (leaf.geometry instanceof replicad.Solid || leaf.geometry instanceof replicad.Compound) {\n      if (filters.length > 0) {\n        leaf.geometry = leaf.geometry.fillet({\n          radius: radius,\n          keep: true,\n          filter: new replicad.EdgeFinder().either(filters)\n        });\n      } else {\n        leaf.geometry = leaf.geometry.fillet(radius)\n      }\n    }\n    \n    return leaf;\n  })\n\n  console.log(\"blah\")\n\n  return basisPart;\n}\n\n\n",
-      "compiledCode": "\"use strict\";\n// Fillet vertical edges in the input part. Optionally provide a selector volume\n// which filters the edges that are filleted.\nfunction run(basisPart, fillet = 1, filterShapes = undefined) {\n    console.log(basisPart);\n    const radius = fillet;\n    if (!basisPart) {\n        throw new Error(\"Missing required shape input\");\n    }\n    if (basisPart.is2D()) {\n        throw new Error(\"2d shapes not supported right now\");\n    }\n    if (radius == 0) {\n        return basisPart;\n    }\n    if (radius < 0) {\n        throw new Error(\"Fillet radius must be 0 or positive\");\n    }\n    let filters = [];\n    if (filterShapes instanceof Assembly) {\n        filterShapes.onLeafs((leaf) => {\n            const bounds = leaf.geometry.boundingBox.bounds;\n            filters.push((finder) => {\n                return finder.inBox(bounds[0], bounds[1]);\n            });\n            return leaf;\n        });\n    }\n    basisPart.onLeafs((leaf) => {\n        if (leaf.geometry instanceof replicad.Solid || leaf.geometry instanceof replicad.Compound) {\n            if (filters.length > 0) {\n                leaf.geometry = leaf.geometry.fillet({\n                    radius: radius,\n                    keep: true,\n                    filter: new replicad.EdgeFinder().either(filters)\n                });\n            }\n            else {\n                leaf.geometry = leaf.geometry.fillet(radius);\n            }\n        }\n        return leaf;\n    });\n    console.log(\"blah\");\n    return basisPart;\n}\n"
-    },
-    {
-      "atomType": "Rectangle",
-      "x": 0.10807291666666667,
-      "y": 0.48951048951048953,
-      "uniqueID": "id-144",
-      "ioValues": [
-        {
-          "name": "x length",
-          "ioValue": 10
-        },
-        {
-          "name": "y length",
-          "ioValue": 10
-        }
-      ]
-    },
-    {
-      "atomType": "Extrude",
-      "x": 0.18815104166666669,
-      "y": 0.45687645687645684,
-      "uniqueID": "id-148",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "height",
-          "ioValue": 10
-        }
-      ]
-    },
-    {
-      "atomType": "Move",
-      "x": 0.294921875,
-      "y": 0.3682983682983683,
-      "uniqueID": "id-152",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "xDist",
-          "ioValue": 29
-        },
-        {
-          "name": "yDist",
-          "ioValue": 0
-        },
-        {
-          "name": "zDist",
-          "ioValue": 2
-        }
-      ]
-    },
-    {
-      "atomType": "Constant",
-      "x": 0.06966145833333333,
-      "y": 0.7714285714285715,
-      "uniqueID": "id-216",
-      "value": 3
     },
     {
       "atomType": "Code",
@@ -410,8 +194,8 @@
     },
     {
       "atomType": "GitHubMolecule",
-      "x": 0.7571614583333333,
-      "y": 0.5457142857142857,
+      "x": 0.7532552083333334,
+      "y": 0.42857142857142855,
       "uniqueID": "id-366",
       "name": "IthFromAssembly",
       "ioValues": [
@@ -519,64 +303,63 @@
       "fileTypeVersion": 1
     },
     {
-      "atomType": "Circle",
-      "x": 0.5260416666666667,
-      "y": 0.9028571428571429,
-      "uniqueID": "id-446",
-      "ioValues": [
-        {
-          "name": "diameter",
-          "ioValue": 10
-        }
-      ]
-    },
-    {
-      "atomType": "Difference",
-      "x": 0.5904947916666666,
-      "y": 0.8942857142857142,
-      "uniqueID": "id-449",
-      "ioValues": [
-        {
-          "name": "retain",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "remove",
-          "ioValue": "__GEOMETRY_INPUT__"
-        }
-      ]
-    },
-    {
-      "atomType": "Rotate",
-      "x": 0.6419270833333334,
-      "y": 0.8514285714285714,
-      "uniqueID": "id-453",
+      "atomType": "Extrude",
+      "x": 0.4166666666666667,
+      "y": 0.25142857142857145,
+      "uniqueID": "id-39",
       "ioValues": [
         {
           "name": "geometry",
           "ioValue": "__GEOMETRY_INPUT__"
         },
         {
-          "name": "x-axis degrees",
-          "ioValue": 0
-        },
-        {
-          "name": "y-axis degrees",
-          "ioValue": 0
-        },
-        {
-          "name": "z-axis degrees",
-          "ioValue": 0
+          "name": "height",
+          "ioValue": 10
         }
       ]
+    },
+    {
+      "atomType": "Rectangle",
+      "x": 0.1328125,
+      "y": 0.19428571428571428,
+      "uniqueID": "id-546",
+      "ioValues": [
+        {
+          "name": "x length",
+          "ioValue": 10,
+          "currentEquation": "10"
+        },
+        {
+          "name": "y length",
+          "ioValue": 20,
+          "currentEquation": "20"
+        }
+      ]
+    },
+    {
+      "atomType": "Code",
+      "x": 0.17252604166666669,
+      "y": 0.5314285714285714,
+      "uniqueID": "id-551",
+      "ioValues": [
+        {
+          "name": "shape",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "count",
+          "ioValue": 1
+        },
+        {
+          "name": "offset",
+          "ioValue": 5
+        }
+      ],
+      "interpreterVersion": 1,
+      "code": "\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n * \n * Notice that defaults are set for both count and offset.\n */\nfunction run(shape: Assembly, count: number = 1, offset: number = 5) {\n  if (count == 0) {\n    return []\n  }\n  const isReversed = count < 0;\n  if (isReversed) {\n    offset = -1 * offset\n  }\n  count = Math.abs(count)\n\n  const result = [shape]\n  for (let i = 1; i < count; i++) {\n    const movedCopy = new Assembly(shape).onLeafs((leaf) => {\n      if (leaf.is2D()) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0)\n      } else if (leaf.geometry instanceof replicad._3DShape) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0, 0)\n      }\n      return leaf;\n    })\n\n    if (movedCopy) {\n      result.push(movedCopy)\n    }\n  }\n\n  return result;\n}\n"
     }
   ],
   "allConnectors": [
-    {
-      "ap2Name": "geometry",
-      "ap1ID": "faf25742-ee63-4660-93f6-61373f099b54",
-      "ap2ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2"
-    },
     {
       "ap2Name": "Shape 1",
       "ap1ID": "faf25742-ee63-4660-93f6-61373f099b54",
@@ -586,16 +369,6 @@
       "ap2Name": "geometry",
       "ap1ID": "faf25742-ee63-4660-93f6-61373f099b54",
       "ap2ID": "id-39"
-    },
-    {
-      "ap2Name": "Shape 1",
-      "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
-      "ap2ID": "5ff1199f-c1fd-4ddb-8ce8-ee38a1c8d1f9"
-    },
-    {
-      "ap2Name": "shape",
-      "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
-      "ap2ID": "id-43"
     },
     {
       "ap2Name": "shape",
@@ -609,28 +382,13 @@
     },
     {
       "ap2Name": "geometry",
-      "ap1ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2",
-      "ap2ID": "445b490a-66b1-42fb-a7c7-fc519fcd1f85"
-    },
-    {
-      "ap2Name": "yDist",
-      "ap1ID": "74766fec-7684-4e5d-b6d6-454afabaddfb",
-      "ap2ID": "d6b08d5e-b4d3-4e13-8b9d-1e25bbd87cd2"
-    },
-    {
-      "ap2Name": "geometry",
-      "ap1ID": "90379be9-52a6-4840-8987-2e978c76a660",
-      "ap2ID": "c8cb90b7-edd2-48e8-9e6c-52cf5a762d5f"
-    },
-    {
-      "ap2Name": "geometry",
       "ap1ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039",
       "ap2ID": "902265eb-1e76-4c47-b407-c968ea10559e"
     },
     {
-      "ap2Name": "Shape 2",
-      "ap1ID": "c8cb90b7-edd2-48e8-9e6c-52cf5a762d5f",
-      "ap2ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039"
+      "ap2Name": "geometry",
+      "ap1ID": "id-89",
+      "ap2ID": "id-366"
     },
     {
       "ap2Name": "basisPart",
@@ -643,39 +401,9 @@
       "ap2ID": "id-281"
     },
     {
-      "ap2Name": "geometry",
-      "ap1ID": "id-89",
-      "ap2ID": "id-366"
-    },
-    {
-      "ap2Name": "number or geometry",
-      "ap1ID": "id-138",
-      "ap2ID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4"
-    },
-    {
-      "ap2Name": "geometry",
-      "ap1ID": "id-144",
-      "ap2ID": "id-148"
-    },
-    {
-      "ap2Name": "remove",
-      "ap1ID": "id-144",
-      "ap2ID": "id-449"
-    },
-    {
-      "ap2Name": "geometry",
-      "ap1ID": "id-148",
-      "ap2ID": "id-152"
-    },
-    {
-      "ap2Name": "retain",
-      "ap1ID": "id-446",
-      "ap2ID": "id-449"
-    },
-    {
-      "ap2Name": "geometry",
-      "ap1ID": "id-449",
-      "ap2ID": "id-453"
+      "ap2Name": "Shape 3",
+      "ap1ID": "id-546",
+      "ap2ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039"
     }
   ],
   "unitsKey": "MM",
