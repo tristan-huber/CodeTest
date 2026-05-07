@@ -240,6 +240,61 @@
       "compiledCode": "\"use strict\";\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n *\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    return replicad.assembleWire([replicad.makeEllipseArc(10, 5, 0, end)]);\n}\n"
     },
     {
+      "atomType": "Code",
+      "x": 0.10091145833333333,
+      "y": 0.7371428571428572,
+      "uniqueID": "id-597",
+      "ioValues": [
+        {
+          "name": "end",
+          "ioValue": 3
+        }
+      ],
+      "interpreterVersion": 1,
+      "code": "\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n * \n * Notice that defaults are set for both count and offset.\n */\nfunction run(end: number = 3) {\n  return replicad.assembleWire([replicad.makeEllipseArc(10,5,0,end)])\n}\n",
+      "compiledCode": "\"use strict\";\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n *\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    return replicad.assembleWire([replicad.makeEllipseArc(10, 5, 0, end)]);\n}\n"
+    },
+    {
+      "atomType": "Move",
+      "x": 0.220703125,
+      "y": 0.7971428571428572,
+      "uniqueID": "id-600",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "xDist",
+          "ioValue": 0
+        },
+        {
+          "name": "yDist",
+          "ioValue": 0
+        },
+        {
+          "name": "zDist",
+          "ioValue": 10
+        }
+      ]
+    },
+    {
+      "atomType": "Assembly",
+      "x": 0.3645833333333333,
+      "y": 0.5457142857142857,
+      "uniqueID": "id-606",
+      "ioValues": [
+        {
+          "name": "Shape 1",
+          "ioValue": null
+        },
+        {
+          "name": "Shape 2",
+          "ioValue": null
+        }
+      ]
+    },
+    {
       "atomType": "GitHubMolecule",
       "x": 0.7532552083333334,
       "y": 0.42857142857142855,
@@ -351,9 +406,9 @@
     },
     {
       "atomType": "Code",
-      "x": 0.10091145833333333,
-      "y": 0.7371428571428572,
-      "uniqueID": "id-597",
+      "x": 0.39192708333333337,
+      "y": 0.7771428571428571,
+      "uniqueID": "id-663",
       "ioValues": [
         {
           "name": "end",
@@ -361,49 +416,8 @@
         }
       ],
       "interpreterVersion": 1,
-      "code": "\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n * \n * Notice that defaults are set for both count and offset.\n */\nfunction run(end: number = 3) {\n  return replicad.assembleWire([replicad.makeEllipseArc(10,5,0,end)])\n}\n",
-      "compiledCode": "\"use strict\";\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n *\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    return replicad.assembleWire([replicad.makeEllipseArc(10, 5, 0, end)]);\n}\n"
-    },
-    {
-      "atomType": "Move",
-      "x": 0.220703125,
-      "y": 0.7971428571428572,
-      "uniqueID": "id-600",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "xDist",
-          "ioValue": 0
-        },
-        {
-          "name": "yDist",
-          "ioValue": 0
-        },
-        {
-          "name": "zDist",
-          "ioValue": 10,
-          "currentEquation": "10"
-        }
-      ]
-    },
-    {
-      "atomType": "Assembly",
-      "x": 0.3645833333333333,
-      "y": 0.5457142857142857,
-      "uniqueID": "id-606",
-      "ioValues": [
-        {
-          "name": "Shape 1",
-          "ioValue": null
-        },
-        {
-          "name": "Shape 2",
-          "ioValue": null
-        }
-      ]
+      "code": "\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end: number = 3) {\n  return new replicad.Vector([2,2,4])\n}\n",
+      "compiledCode": "\"use strict\";\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    return new replicad.Vector([2, 2, 4]);\n}\n"
     }
   ],
   "allConnectors": [
