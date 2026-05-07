@@ -193,6 +193,53 @@
       "compiledCode": "\"use strict\";\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n *\n * Notice that defaults are set for both count and offset.\n */\nfunction run(shape, count = 1, offset = 5) {\n    if (count == 0) {\n        return [];\n    }\n    const isReversed = count < 0;\n    if (isReversed) {\n        offset = -1 * offset;\n    }\n    count = Math.abs(count);\n    const result = [shape];\n    for (let i = 1; i < count; i++) {\n        const movedCopy = new Assembly(shape).onLeafs((leaf) => {\n            if (leaf.is2D()) {\n                leaf.geometry = leaf.geometry.translate(offset * i, 0);\n            }\n            else if (leaf.geometry instanceof replicad._3DShape) {\n                leaf.geometry = leaf.geometry.translate(offset * i, 0, 0);\n            }\n            return leaf;\n        });\n        if (movedCopy) {\n            result.push(movedCopy);\n        }\n    }\n    return result;\n}\n"
     },
     {
+      "atomType": "Extrude",
+      "x": 0.4166666666666667,
+      "y": 0.25142857142857145,
+      "uniqueID": "id-39",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "height",
+          "ioValue": 10
+        }
+      ]
+    },
+    {
+      "atomType": "Rectangle",
+      "x": 0.1328125,
+      "y": 0.19428571428571428,
+      "uniqueID": "id-546",
+      "ioValues": [
+        {
+          "name": "x length",
+          "ioValue": 10
+        },
+        {
+          "name": "y length",
+          "ioValue": 20
+        }
+      ]
+    },
+    {
+      "atomType": "Code",
+      "x": 0.17252604166666669,
+      "y": 0.5314285714285714,
+      "uniqueID": "id-551",
+      "ioValues": [
+        {
+          "name": "end",
+          "ioValue": 3
+        }
+      ],
+      "interpreterVersion": 1,
+      "code": "\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n * \n * Notice that defaults are set for both count and offset.\n */\nfunction run(end: number = 3) {\n  return replicad.assembleWire([replicad.makeEllipseArc(10,5,0,end)])\n}\n",
+      "compiledCode": "\"use strict\";\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n *\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    return replicad.assembleWire([replicad.makeEllipseArc(10, 5, 0, end)]);\n}\n"
+    },
+    {
       "atomType": "GitHubMolecule",
       "x": 0.7532552083333334,
       "y": 0.42857142857142855,
@@ -301,62 +348,6 @@
       },
       "unitsKey": "Unitless",
       "fileTypeVersion": 1
-    },
-    {
-      "atomType": "Extrude",
-      "x": 0.4166666666666667,
-      "y": 0.25142857142857145,
-      "uniqueID": "id-39",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "height",
-          "ioValue": 10
-        }
-      ]
-    },
-    {
-      "atomType": "Rectangle",
-      "x": 0.1328125,
-      "y": 0.19428571428571428,
-      "uniqueID": "id-546",
-      "ioValues": [
-        {
-          "name": "x length",
-          "ioValue": 10,
-          "currentEquation": "10"
-        },
-        {
-          "name": "y length",
-          "ioValue": 20,
-          "currentEquation": "20"
-        }
-      ]
-    },
-    {
-      "atomType": "Code",
-      "x": 0.17252604166666669,
-      "y": 0.5314285714285714,
-      "uniqueID": "id-551",
-      "ioValues": [
-        {
-          "name": "shape",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "count",
-          "ioValue": 1
-        },
-        {
-          "name": "offset",
-          "ioValue": 5
-        }
-      ],
-      "interpreterVersion": 1,
-      "code": "\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n * \n * Notice that defaults are set for both count and offset.\n */\nfunction run(shape: Assembly, count: number = 1, offset: number = 5) {\n  if (count == 0) {\n    return []\n  }\n  const isReversed = count < 0;\n  if (isReversed) {\n    offset = -1 * offset\n  }\n  count = Math.abs(count)\n\n  const result = [shape]\n  for (let i = 1; i < count; i++) {\n    const movedCopy = new Assembly(shape).onLeafs((leaf) => {\n      if (leaf.is2D()) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0)\n      } else if (leaf.geometry instanceof replicad._3DShape) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0, 0)\n      }\n      return leaf;\n    })\n\n    if (movedCopy) {\n      result.push(movedCopy)\n    }\n  }\n\n  return result;\n}\n"
     }
   ],
   "allConnectors": [
