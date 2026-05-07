@@ -310,6 +310,21 @@
       "compiledCode": "\"use strict\";\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    return new replicad.Vector([2, 2, 4]);\n}\n"
     },
     {
+      "atomType": "Code",
+      "x": 0.5123697916666666,
+      "y": 0.45714285714285713,
+      "uniqueID": "id-722",
+      "ioValues": [
+        {
+          "name": "shape",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ],
+      "interpreterVersion": 1,
+      "code": "\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(shape: Assembly) {\n  let result = undefined;\n  shape.onLeafs((leaf) => {\n    if (leaf.isSolid3D()) {\n      result = leaf.geometry.faces[0]\n    }\n    return leaf;\n  })\n  return result\n}\n",
+      "compiledCode": "\"use strict\";\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(shape) {\n    let result = undefined;\n    shape.onLeafs((leaf) => {\n        if (leaf.isSolid3D()) {\n            result = leaf.geometry.faces[0];\n        }\n        return leaf;\n    });\n    return result;\n}\n"
+    },
+    {
       "atomType": "GitHubMolecule",
       "x": 0.7532552083333334,
       "y": 0.42857142857142855,
@@ -418,21 +433,6 @@
       },
       "unitsKey": "Unitless",
       "fileTypeVersion": 1
-    },
-    {
-      "atomType": "Code",
-      "x": 0.5123697916666666,
-      "y": 0.45714285714285713,
-      "uniqueID": "id-722",
-      "ioValues": [
-        {
-          "name": "end",
-          "ioValue": 3
-        }
-      ],
-      "interpreterVersion": 1,
-      "code": "\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end: number = 3) {\n  return new replicad.Vector([2,2,4])\n}\n",
-      "compiledCode": "\"use strict\";\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    return new replicad.Vector([2, 2, 4]);\n}\n"
     }
   ],
   "allConnectors": [
