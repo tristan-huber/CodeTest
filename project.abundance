@@ -296,8 +296,8 @@
     },
     {
       "atomType": "Code",
-      "x": 0.39192708333333337,
-      "y": 0.7771428571428571,
+      "x": 0.3899739583333333,
+      "y": 0.822857142857143,
       "uniqueID": "id-663",
       "ioValues": [
         {
@@ -311,8 +311,8 @@
     },
     {
       "atomType": "Code",
-      "x": 0.5123697916666666,
-      "y": 0.45714285714285713,
+      "x": 0.49609375,
+      "y": 0.5085714285714286,
       "uniqueID": "id-722",
       "ioValues": [
         {
@@ -433,6 +433,28 @@
       },
       "unitsKey": "Unitless",
       "fileTypeVersion": 1
+    },
+    {
+      "atomType": "Code",
+      "x": 0.458984375,
+      "y": 0.8085714285714286,
+      "uniqueID": "id-785",
+      "ioValues": [
+        {
+          "name": "shape",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "count",
+          "ioValue": 1
+        },
+        {
+          "name": "offset",
+          "ioValue": 5
+        }
+      ],
+      "interpreterVersion": 1,
+      "code": "\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n * \n * Notice that defaults are set for both count and offset.\n */\nfunction run(shape: Assembly, count: number = 1, offset: number = 5) {\n  if (count == 0) {\n    return []\n  }\n  const isReversed = count < 0;\n  if (isReversed) {\n    offset = -1 * offset\n  }\n  count = Math.abs(count)\n\n  const result = [shape]\n  for (let i = 1; i < count; i++) {\n    const movedCopy = new Assembly(shape).onLeafs((leaf) => {\n      if (leaf.isDrawing2D()) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0)\n      } else if (leaf.geometry instanceof replicad._3DShape) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0, 0)\n      }\n      return leaf;\n    })\n\n    if (movedCopy) {\n      result.push(movedCopy)\n    }\n  }\n\n  return result;\n}\n"
     }
   ],
   "allConnectors": [
@@ -475,6 +497,11 @@
       "ap2Name": "shape",
       "ap1ID": "id-39",
       "ap2ID": "id-281"
+    },
+    {
+      "ap2Name": "shape",
+      "ap1ID": "id-39",
+      "ap2ID": "id-722"
     },
     {
       "ap2Name": "Shape 3",
