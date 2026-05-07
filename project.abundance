@@ -32,8 +32,7 @@
       "ioValues": [
         {
           "name": "x length",
-          "ioValue": 10,
-          "currentEquation": "10"
+          "ioValue": 10
         },
         {
           "name": "y length",
@@ -205,8 +204,7 @@
         },
         {
           "name": "height",
-          "ioValue": 30,
-          "currentEquation": "30"
+          "ioValue": 30
         }
       ]
     },
@@ -351,6 +349,22 @@
       "compiledCode": "\"use strict\";\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    return replicad.drawCircle(4).sketchOnPlane(\"XY\").extrude(end);\n}\n"
     },
     {
+      "atomType": "Assembly",
+      "x": 0.6627604166666666,
+      "y": 0.6799999999999999,
+      "uniqueID": "id-854",
+      "ioValues": [
+        {
+          "name": "Shape 2",
+          "ioValue": null
+        },
+        {
+          "name": "Shape 3",
+          "ioValue": null
+        }
+      ]
+    },
+    {
       "atomType": "GitHubMolecule",
       "x": 0.7532552083333334,
       "y": 0.42857142857142855,
@@ -459,22 +473,6 @@
       },
       "unitsKey": "Unitless",
       "fileTypeVersion": 1
-    },
-    {
-      "atomType": "Assembly",
-      "x": 0.6627604166666666,
-      "y": 0.6799999999999999,
-      "uniqueID": "id-854",
-      "ioValues": [
-        {
-          "name": "Shape 2",
-          "ioValue": null
-        },
-        {
-          "name": "Shape 3",
-          "ioValue": null
-        }
-      ]
     }
   ],
   "allConnectors": [
@@ -547,6 +545,11 @@
       "ap2Name": "Shape 2",
       "ap1ID": "id-785",
       "ap2ID": "id-854"
+    },
+    {
+      "ap2Name": "number or geometry",
+      "ap1ID": "id-790",
+      "ap2ID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4"
     },
     {
       "ap2Name": "geometry",
