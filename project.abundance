@@ -4,17 +4,11 @@
   "y": 0,
   "uniqueID": "09e14d64-8a6d-45a6-8d79-8a4b53c96a27",
   "name": "CodeTest",
-  "ioValues": [
-    {
-      "name": "Input (1)",
-      "ioValue": "__GEOMETRY_INPUT__"
-    }
-  ],
   "topLevel": true,
   "allAtoms": [
     {
       "atomType": "Output",
-      "x": 0.98,
+      "x": 1,
       "y": 0.5,
       "uniqueID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4",
       "ioValues": [
@@ -25,177 +19,131 @@
       ]
     },
     {
-      "atomType": "Rectangle",
-      "x": 0.19921875,
-      "y": 0.23714285714285713,
-      "uniqueID": "faf25742-ee63-4660-93f6-61373f099b54",
-      "ioValues": [
-        {
-          "name": "x length",
-          "ioValue": 10
-        },
-        {
-          "name": "y length",
-          "ioValue": 5
-        }
-      ]
-    },
-    {
-      "atomType": "Extrude",
-      "x": 0.3684895833333333,
-      "y": 0.10857142857142857,
-      "uniqueID": "902265eb-1e76-4c47-b407-c968ea10559e",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "height",
-          "ioValue": 10
-        }
-      ]
-    },
-    {
-      "atomType": "Code",
-      "x": 0.65234375,
-      "y": 0.14857142857142858,
-      "uniqueID": "69571ba7-0e6c-4202-be46-6d2d781d2d22",
-      "ioValues": [
-        {
-          "name": "basisPart",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "movedPart",
-          "ioValue": "__GEOMETRY_INPUT__"
-        }
-      ],
-      "interpreterVersion": 1,
-      "code": "// Right-of takes two atoms and places the second against the right\n// edge of the first\n\n// TODO: vector input to set direction instead of simple heading\n\nfunction totalBounds(part: Assembly): replicad.BoundingBox | replicad.BoundingBox2d {\n  let bounds: replicad.BoundingBox | replicad.BoundingBox2d |  undefined = undefined;\n  part.onLeafs((leaf) => {\n    if (bounds == undefined) {\n      bounds = leaf.geometry.boundingBox;\n    } else {\n      //@ts-ignore\n      bounds.add(leaf.geometry.boundingBox)\n    }\n    return leaf;\n  });\n  if (bounds == undefined) {\n    throw Error(\"Recieved assembly with no leafs somehow\")\n  }\n  return bounds;\n}\n\n\nfunction run(basisPart: Assembly, movedPart: Assembly) {\n  if (!basisPart || !movedPart) {\n    throw new Error(\"Missing required shape input\")\n  }\n\n  if (basisPart.isDrawing2D() != movedPart.isDrawing2D()) {\n    throw new Error(\"Input shapes must be of the same dimension. Both 2D or both 3D.\")\n  }\n\n  const basisBounds = totalBounds(basisPart)\n  const movedBounds = totalBounds(movedPart)\n\n  const translate = movedBounds.bounds[0][0] - basisBounds.bounds[1][0];\n\n  movedPart.onLeafs((leaf) => {\n    leaf.geometry = leaf.geometry.translate(-translate, 0, 0)\n    return leaf;\n  })\n  console.log(basisBounds)\n  console.log(translate)\n  console.log(movedPart)\n\n  return movedPart;\n}\n\n\n",
-      "compiledCode": "\"use strict\";\n// Right-of takes two atoms and places the second against the right\n// edge of the first\n// TODO: vector input to set direction instead of simple heading\nfunction totalBounds(part) {\n    let bounds = undefined;\n    part.onLeafs((leaf) => {\n        if (bounds == undefined) {\n            bounds = leaf.geometry.boundingBox;\n        }\n        else {\n            //@ts-ignore\n            bounds.add(leaf.geometry.boundingBox);\n        }\n        return leaf;\n    });\n    if (bounds == undefined) {\n        throw Error(\"Recieved assembly with no leafs somehow\");\n    }\n    return bounds;\n}\nfunction run(basisPart, movedPart) {\n    if (!basisPart || !movedPart) {\n        throw new Error(\"Missing required shape input\");\n    }\n    if (basisPart.isDrawing2D() != movedPart.isDrawing2D()) {\n        throw new Error(\"Input shapes must be of the same dimension. Both 2D or both 3D.\");\n    }\n    const basisBounds = totalBounds(basisPart);\n    const movedBounds = totalBounds(movedPart);\n    const translate = movedBounds.bounds[0][0] - basisBounds.bounds[1][0];\n    movedPart.onLeafs((leaf) => {\n        leaf.geometry = leaf.geometry.translate(-translate, 0, 0);\n        return leaf;\n    });\n    console.log(basisBounds);\n    console.log(translate);\n    console.log(movedPart);\n    return movedPart;\n}\n"
-    },
-    {
-      "atomType": "Input",
-      "x": 0.025384615384615384,
-      "y": 0.15384615384615385,
-      "uniqueID": "74766fec-7684-4e5d-b6d6-454afabaddfb",
-      "name": "Input (1)",
-      "type": "geometry"
-    },
-    {
-      "atomType": "Fusion",
-      "x": 0.2669270833333333,
-      "y": 0.10571428571428572,
-      "uniqueID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039",
-      "ioValues": [
-        {
-          "name": "Shape 1",
-          "ioValue": {
-            "geometry": "rectangle-10-5",
-            "dimension": "2D",
-            "plane": {
-              "origin": [
-                0,
-                0,
-                0
-              ],
-              "xDir": [
-                1,
-                0,
-                0
-              ],
-              "normal": [
-                0,
-                0,
-                1
-              ]
-            },
-            "color": "#aad7f2",
-            "tags": [],
-            "bom": []
-          }
-        },
-        {
-          "name": "Shape 3",
-          "ioValue": {
-            "geometry": "rectangle-10-20",
-            "dimension": "2D",
-            "plane": {
-              "origin": [
-                0,
-                0,
-                0
-              ],
-              "xDir": [
-                1,
-                0,
-                0
-              ],
-              "normal": [
-                0,
-                0,
-                1
-              ]
-            },
-            "color": "#aad7f2",
-            "tags": [],
-            "bom": []
-          }
-        }
-      ],
-      "unionType": "Fusion"
-    },
-    {
-      "atomType": "Code",
-      "x": 0.6490885416666667,
-      "y": 0.3685714285714286,
-      "uniqueID": "id-89",
+      "atomType": "GitHubMolecule",
+      "x": 0.5,
+      "y": 0.6,
+      "uniqueID": "id-1001",
+      "name": "selected.Fillet",
       "ioValues": [
         {
           "name": "shape",
           "ioValue": "__GEOMETRY_INPUT__"
         },
         {
-          "name": "count",
-          "ioValue": 2
-        },
-        {
-          "name": "offset",
-          "ioValue": 12
+          "name": "radius",
+          "ioValue": 3,
+          "currentEquation": "3"
         }
       ],
-      "interpreterVersion": 1,
-      "code": "\nfunction run(shape: Assembly, count: number = 1, offset: number = 5) {\n  console.log(\"foo\")\n  if (count == 0) {\n    return []\n  }\n  const isReversed = count < 0;\n  if (isReversed) {\n    offset = -1 * offset\n  }\n  count = Math.abs(count)\n\n  const result = [shape]\n  for (let i = 1; i < count; i++) {\n    const movedCopy = new Assembly(shape).onLeafs((leaf) => {\n      if (leaf.isDrawing2D()) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0)\n      } else if (leaf.geometry instanceof replicad._3DShape) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0, 0)\n      }\n      return leaf;\n    })\n\n    if (movedCopy) {\n      result.push(movedCopy)\n    }\n  }\n\n  const t = replicad.drawCircle(5);\n  return result;\n}\n\n\n",
-      "compiledCode": "\"use strict\";\nfunction run(shape, count = 1, offset = 5) {\n    console.log(\"foo\");\n    if (count == 0) {\n        return [];\n    }\n    const isReversed = count < 0;\n    if (isReversed) {\n        offset = -1 * offset;\n    }\n    count = Math.abs(count);\n    const result = [shape];\n    for (let i = 1; i < count; i++) {\n        const movedCopy = new Assembly(shape).onLeafs((leaf) => {\n            if (leaf.isDrawing2D()) {\n                leaf.geometry = leaf.geometry.translate(offset * i, 0);\n            }\n            else if (leaf.geometry instanceof replicad._3DShape) {\n                leaf.geometry = leaf.geometry.translate(offset * i, 0, 0);\n            }\n            return leaf;\n        });\n        if (movedCopy) {\n            result.push(movedCopy);\n        }\n    }\n    const t = replicad.drawCircle(5);\n    return result;\n}\n"
-    },
-    {
-      "atomType": "Code",
-      "x": 0.8014322916666666,
-      "y": 0.2733423545331529,
-      "uniqueID": "id-281",
-      "ioValues": [
+      "topLevel": false,
+      "allAtoms": [
         {
+          "atomType": "Input",
+          "x": 0,
+          "y": 0.2,
+          "uniqueID": "id-1000",
+          "name": "radius",
+          "options": []
+        },
+        {
+          "atomType": "Output",
+          "x": 1,
+          "y": 0.5,
+          "uniqueID": "id-997",
+          "ioValues": [
+            {
+              "name": "number or geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            }
+          ]
+        },
+        {
+          "atomType": "Code",
+          "x": 0.4,
+          "y": 0.7,
+          "uniqueID": "id-998",
+          "ioValues": [
+            {
+              "name": "toFillet",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "radius",
+              "ioValue": 3
+            }
+          ],
+          "interpreterVersion": 1,
+          "code": "function run(toFillet: Assembly, radius: number) {\n  return toFillet.onLeafs((leaf) => {\n    if (leaf.geometry instanceof replicad.Drawing || !replicad.isShape3D(leaf.geometry)) {\n      return leaf;\n    }\n    if (leaf.selection?.part) {\n      leaf.geometry = leaf.geometry.fillet(radius)\n      return leaf;\n    }\n    // else apply only to filtered faces and edges\n    let edgesToFillet: replicad.Edge[] = []\n    if (leaf.selection?.faces) {\n      leaf.selection.faces.forEach((faceIndex) => {\n        edgesToFillet.push(...leaf.geometry.faces[faceIndex].edges)\n      });\n    }\n    console.log(edgesToFillet)\n    console.log(\"intermediate\")\n    console.log(leaf.selection)\n    if (leaf.selection?.edges) {\n      edgesToFillet.push(...leaf.selection.edges.map((index) => leaf.geometry.edges[index]))\n    }\n    if (edgesToFillet.length == 0) {\n      return leaf;\n    }\n    edgesToFillet = edgesToFillet.filter((e) => e != null)\n    if (edgesToFillet.length == 0) {\n      return leaf.geometry\n    }\n    console.log(edgesToFillet)\n    leaf.geometry = leaf.geometry.fillet(radius, (e) => { return e.inList(edgesToFillet.map((e) => e.clone())) })\n    return leaf;\n  })\n}",
+          "compiledCode": "\"use strict\";\nfunction run(toFillet, radius) {\n    return toFillet.onLeafs((leaf) => {\n        if (leaf.geometry instanceof replicad.Drawing || !replicad.isShape3D(leaf.geometry)) {\n            return leaf;\n        }\n        if (leaf.selection?.part) {\n            leaf.geometry = leaf.geometry.fillet(radius);\n            return leaf;\n        }\n        // else apply only to filtered faces and edges\n        let edgesToFillet = [];\n        if (leaf.selection?.faces) {\n            leaf.selection.faces.forEach((faceIndex) => {\n                edgesToFillet.push(...leaf.geometry.faces[faceIndex].edges);\n            });\n        }\n        console.log(edgesToFillet);\n        console.log(\"intermediate\");\n        console.log(leaf.selection);\n        if (leaf.selection?.edges) {\n            edgesToFillet.push(...leaf.selection.edges.map((index) => leaf.geometry.edges[index]));\n        }\n        if (edgesToFillet.length == 0) {\n            return leaf;\n        }\n        edgesToFillet = edgesToFillet.filter((e) => e != null);\n        if (edgesToFillet.length == 0) {\n            return leaf.geometry;\n        }\n        console.log(edgesToFillet);\n        leaf.geometry = leaf.geometry.fillet(radius, (e) => { return e.inList(edgesToFillet.map((e) => e.clone())); });\n        return leaf;\n    });\n}\n"
+        },
+        {
+          "atomType": "Input",
+          "x": 0,
+          "y": 0.2,
+          "uniqueID": "id-999",
           "name": "shape",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "count",
-          "ioValue": 1
-        },
-        {
-          "name": "offset",
-          "ioValue": 5
+          "type": "edgeselect",
+          "options": [],
+          "selectedEdgeData": {
+            "0": [
+              4
+            ]
+          }
         }
       ],
-      "interpreterVersion": 1,
-      "code": "\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n * \n * Notice that defaults are set for both count and offset.\n */\nfunction run(shape: Assembly, count: number = 1, offset: number = 5) {\n  if (count == 0) {\n    return []\n  }\n  const isReversed = count < 0;\n  if (isReversed) {\n    offset = -1 * offset\n  }\n  count = Math.abs(count)\n\n  const result = [shape]\n  for (let i = 1; i < count; i++) {\n    const movedCopy = new Assembly(shape).onLeafs((leaf) => {\n      if (leaf.is2D()) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0)\n      } else if (leaf.geometry instanceof replicad._3DShape) {\n        leaf.geometry = leaf.geometry.translate(offset * i, 0, 0)\n      }\n      return leaf;\n    })\n\n    if (movedCopy) {\n      result.push(movedCopy)\n    }\n  }\n\n  return result;\n}\n",
-      "compiledCode": "\"use strict\";\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n *\n * Notice that defaults are set for both count and offset.\n */\nfunction run(shape, count = 1, offset = 5) {\n    if (count == 0) {\n        return [];\n    }\n    const isReversed = count < 0;\n    if (isReversed) {\n        offset = -1 * offset;\n    }\n    count = Math.abs(count);\n    const result = [shape];\n    for (let i = 1; i < count; i++) {\n        const movedCopy = new Assembly(shape).onLeafs((leaf) => {\n            if (leaf.is2D()) {\n                leaf.geometry = leaf.geometry.translate(offset * i, 0);\n            }\n            else if (leaf.geometry instanceof replicad._3DShape) {\n                leaf.geometry = leaf.geometry.translate(offset * i, 0, 0);\n            }\n            return leaf;\n        });\n        if (movedCopy) {\n            result.push(movedCopy);\n        }\n    }\n    return result;\n}\n"
+      "allConnectors": [
+        {
+          "ap2Name": "number or geometry",
+          "ap1ID": "id-998",
+          "ap2ID": "id-997"
+        },
+        {
+          "ap2Name": "toFillet",
+          "ap1ID": "id-999",
+          "ap2ID": "id-998"
+        },
+        {
+          "ap2Name": "radius",
+          "ap1ID": "id-1000",
+          "ap2ID": "id-998"
+        }
+      ],
+      "parentRepo": {
+        "lastFoundGit": "2026-09-20T02:23:39.099Z",
+        "privateRepo": false,
+        "repoName": "selected.Fillet",
+        "dateCreated": "2026-07-21T21:29:20Z",
+        "likes": 0,
+        "pngURL": "https://raw.githubusercontent.com/tristan-huber/selected.Fillet/master/project.png?sanitize=true",
+        "readme": "https://raw.githubusercontent.com/tristan-huber/selected.Fillet/master/README.md?sanitize=true",
+        "yyyy": 2026,
+        "topMoleculeID": "",
+        "userRanking": 0,
+        "userSetAsThumbnail": false,
+        "githubMoleculesUsed": [],
+        "html_url": "https://github.com/tristan-huber/selected.Fillet",
+        "topics": [
+          "abundance-tool"
+        ],
+        "pullRequests": [],
+        "forks": 0,
+        "dateModified": "2026-07-21T21:34:22Z",
+        "ranking": 3,
+        "searchField": "selected.fillet tristan-huber fillet the only the selected edges of an assembly. you can also input face or sub-assembly selections, edges will be filleted if they meet any of the selection criteria, eg on a selected subassembly, on a selected face. default fillets all edges. abundance-tool",
+        "owner": "tristan-huber",
+        "description": "Fillet the only the selected edges of an assembly. You can also input face or sub-assembly selections, edges will be filleted if they meet any of the selection criteria, eg on a selected subassembly, on a selected face. Default fillets all edges.",
+        "contentURL": "https://raw.githubusercontent.com/tristan-huber/selected.Fillet/master/project.abundance?sanitize=true",
+        "svgURL": "https://raw.githubusercontent.com/tristan-huber/selected.Fillet/master/project.svg?sanitize=true",
+        "isLocal": false
+      },
+      "unitsKey": "Unitless",
+      "fileTypeVersion": 1,
+      "lastReloadedFromGithubAt": 1790356787159
     },
     {
       "atomType": "Extrude",
-      "x": 0.4166666666666667,
-      "y": 0.25142857142857145,
+      "x": 0.3,
+      "y": 0.4,
       "uniqueID": "id-39",
       "ioValues": [
         {
@@ -210,8 +158,8 @@
     },
     {
       "atomType": "Rectangle",
-      "x": 0.1328125,
-      "y": 0.19428571428571428,
+      "x": 0.1,
+      "y": 0.2,
       "uniqueID": "id-546",
       "ioValues": [
         {
@@ -223,372 +171,23 @@
           "ioValue": 20
         }
       ]
-    },
-    {
-      "atomType": "Code",
-      "x": 0.17252604166666669,
-      "y": 0.5314285714285714,
-      "uniqueID": "id-551",
-      "ioValues": [
-        {
-          "name": "end",
-          "ioValue": 3
-        }
-      ],
-      "interpreterVersion": 1,
-      "code": "\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n * \n * Notice that defaults are set for both count and offset.\n */\nfunction run(end: number = 3) {\n  return replicad.assembleWire([replicad.makeEllipseArc(10,5,0,end)])\n}\n",
-      "compiledCode": "\"use strict\";\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n *\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    return replicad.assembleWire([replicad.makeEllipseArc(10, 5, 0, end)]);\n}\n"
-    },
-    {
-      "atomType": "Code",
-      "x": 0.10091145833333333,
-      "y": 0.7371428571428572,
-      "uniqueID": "id-597",
-      "ioValues": [
-        {
-          "name": "end",
-          "ioValue": 3
-        }
-      ],
-      "interpreterVersion": 1,
-      "code": "\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n * \n * Notice that defaults are set for both count and offset.\n */\nfunction run(end: number = 3) {\n  return replicad.assembleWire([replicad.makeEllipseArc(10,5,0,end)])\n}\n",
-      "compiledCode": "\"use strict\";\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n *\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    return replicad.assembleWire([replicad.makeEllipseArc(10, 5, 0, end)]);\n}\n"
-    },
-    {
-      "atomType": "Move",
-      "x": 0.220703125,
-      "y": 0.7971428571428572,
-      "uniqueID": "id-600",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "xDist",
-          "ioValue": 0
-        },
-        {
-          "name": "yDist",
-          "ioValue": 0
-        },
-        {
-          "name": "zDist",
-          "ioValue": 10
-        }
-      ]
-    },
-    {
-      "atomType": "Assembly",
-      "x": 0.3645833333333333,
-      "y": 0.5457142857142857,
-      "uniqueID": "id-606",
-      "ioValues": [
-        {
-          "name": "Shape 1",
-          "ioValue": null
-        },
-        {
-          "name": "Shape 2",
-          "ioValue": null
-        }
-      ]
-    },
-    {
-      "atomType": "Code",
-      "x": 0.3430989583333333,
-      "y": 0.8142857142857143,
-      "uniqueID": "id-663",
-      "ioValues": [
-        {
-          "name": "end",
-          "ioValue": 2
-        }
-      ],
-      "interpreterVersion": 1,
-      "code": "\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end: number = 3) {\n  console.log(\"foo\")\n  return replicad.makeVertex([2,2,4])\n}\n",
-      "compiledCode": "\"use strict\";\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    console.log(\"foo\");\n    return replicad.makeVertex([2, 2, 4]);\n}\n"
-    },
-    {
-      "atomType": "Code",
-      "x": 0.49609375,
-      "y": 0.5085714285714286,
-      "uniqueID": "id-722",
-      "ioValues": [
-        {
-          "name": "shape",
-          "ioValue": "__GEOMETRY_INPUT__"
-        }
-      ],
-      "interpreterVersion": 1,
-      "code": "\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(shape: Assembly) {\n  let result = undefined;\n  shape.onLeafs((leaf) => {\n    if (leaf.isSolid3D()) {\n      result = leaf.geometry.faces[0]\n    }\n    return leaf;\n  })\n  return result\n}\n",
-      "compiledCode": "\"use strict\";\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(shape) {\n    let result = undefined;\n    shape.onLeafs((leaf) => {\n        if (leaf.isSolid3D()) {\n            result = leaf.geometry.faces[0];\n        }\n        return leaf;\n    });\n    return result;\n}\n"
-    },
-    {
-      "atomType": "Code",
-      "x": 0.5221354166666666,
-      "y": 0.6799999999999999,
-      "uniqueID": "id-785",
-      "interpreterVersion": 1,
-      "code": "\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n * \n * Notice that defaults are set for both count and offset.\n */\n\nconst pointsAndSpline = (points: [number,number,number][]) => {\n  console.log('bah')\n  const result = [];\n  result.push(\n    replicad.makeBSplineApproximation(points, {\n      degMax: 3,\n      degMin: 1,\n      tolerance: 0.01,\n    })\n  );\n\n  const q = replicad.makeSphere(0.5);\n  for (const p of points) {\n    console.log(p);\n    result.push(q.clone().translate(p[0], p[1], p[2]));\n  }\n  return result;\n};\n\nfunction pointsWithCamberedStart(\n      points: [number,number][],\n      stations: number[],\n      frontCamber: number,\n      backCamber: number\n    ): [number,number,number][]{\n  const result = [];\n  for (let i = 0; i < points.length; i++) {\n    let x = stations[i];\n    let z = points[i][1];\n    if (i == 0) {\n      x = Math.cos(frontCamber) * z; // instead of 0\n      z = Math.sin(frontCamber) * z;\n    }\n    if (i == points.length - 1) {\n      x = x - Math.cos(backCamber) * z;\n      z = Math.sin(backCamber) * z;\n    }\n\n    result.push([x, points[i][0], z]);\n  }\n  //@ts-ignore\n  return result;\n};\n\nfunction run() {\n  const keel_line: [number,number][] = [\n    [0, 16 + 7 / 16],\n    [0, 18 + 7 / 8],\n    [0, 21 + 7 / 8],\n    [0, 21],\n    [0, 18 + 9 / 16],\n  ];\n\n  const sheer: [number, number][] = [\n    [10 + 3 / 8, 2 + 11 / 16],\n    [18 + 9 / 16, 4 + 11 / 16],\n    [22.25, 6 + 3 / 16],\n    [22, 6 + 7 / 16],\n    [19 + 7 / 16, 5 + 11 / 16],\n  ];\n\n  const chine: [number, number][] = [\n    [9 + 1 / 16, 12.25],\n    [15.25, 15 + 1 / 8],\n    [19.25, 18 + 11 / 16],\n    [19 + 9 / 16, 17 + 13 / 16],\n    [17 + 5 / 16, 14.5],\n  ];\n\n  const stationDists = [23 + 1 / 8, 24, 24, 23 + 1 / 8];\n\n  const spoints = [0];\n  for (const offset of stationDists) {\n    spoints.push(spoints[spoints.length - 1] + offset);\n  }\n  const frontCamber = 61 * Math.PI / 180\n  const rearCamber = 80 * Math.PI / 180\n\n  const t = pointsWithCamberedStart(keel_line, spoints, frontCamber, rearCamber);\n\n\n\n  const blep = [\n    pointsAndSpline(pointsWithCamberedStart(keel_line, spoints, frontCamber, rearCamber)),\n    pointsAndSpline(pointsWithCamberedStart(chine, spoints, frontCamber, rearCamber)),\n    pointsAndSpline(pointsWithCamberedStart(sheer, spoints, frontCamber, rearCamber)),\n  ];\n\n  console.log(\"blep\")\n  console.log(blep)\n  console.log(blep.length)\n  const wires = []\n  for (const res of blep) {\n    //@ts-ignore\n    wires.push(replicad.assembleWire([res[0]]))\n  }\n  console.log(wires)\n  return replicad.loft(wires)\n}",
-      "compiledCode": "\"use strict\";\n/**\n * This code atom implements a simple linear layout funtion which repeats\n * shape count times in the positive X direction with offset space\n * between each. Works for either 2D or 3D shapes. Negative offset\n * and negative counts invert the direction.\n *\n * Notice that defaults are set for both count and offset.\n */\nconst pointsAndSpline = (points) => {\n    console.log('bah');\n    const result = [];\n    result.push(replicad.makeBSplineApproximation(points, {\n        degMax: 3,\n        degMin: 1,\n        tolerance: 0.01,\n    }));\n    const q = replicad.makeSphere(0.5);\n    for (const p of points) {\n        console.log(p);\n        result.push(q.clone().translate(p[0], p[1], p[2]));\n    }\n    return result;\n};\nfunction pointsWithCamberedStart(points, stations, frontCamber, backCamber) {\n    const result = [];\n    for (let i = 0; i < points.length; i++) {\n        let x = stations[i];\n        let z = points[i][1];\n        if (i == 0) {\n            x = Math.cos(frontCamber) * z; // instead of 0\n            z = Math.sin(frontCamber) * z;\n        }\n        if (i == points.length - 1) {\n            x = x - Math.cos(backCamber) * z;\n            z = Math.sin(backCamber) * z;\n        }\n        result.push([x, points[i][0], z]);\n    }\n    //@ts-ignore\n    return result;\n}\n;\nfunction run() {\n    const keel_line = [\n        [0, 16 + 7 / 16],\n        [0, 18 + 7 / 8],\n        [0, 21 + 7 / 8],\n        [0, 21],\n        [0, 18 + 9 / 16],\n    ];\n    const sheer = [\n        [10 + 3 / 8, 2 + 11 / 16],\n        [18 + 9 / 16, 4 + 11 / 16],\n        [22.25, 6 + 3 / 16],\n        [22, 6 + 7 / 16],\n        [19 + 7 / 16, 5 + 11 / 16],\n    ];\n    const chine = [\n        [9 + 1 / 16, 12.25],\n        [15.25, 15 + 1 / 8],\n        [19.25, 18 + 11 / 16],\n        [19 + 9 / 16, 17 + 13 / 16],\n        [17 + 5 / 16, 14.5],\n    ];\n    const stationDists = [23 + 1 / 8, 24, 24, 23 + 1 / 8];\n    const spoints = [0];\n    for (const offset of stationDists) {\n        spoints.push(spoints[spoints.length - 1] + offset);\n    }\n    const frontCamber = 61 * Math.PI / 180;\n    const rearCamber = 80 * Math.PI / 180;\n    const t = pointsWithCamberedStart(keel_line, spoints, frontCamber, rearCamber);\n    const blep = [\n        pointsAndSpline(pointsWithCamberedStart(keel_line, spoints, frontCamber, rearCamber)),\n        pointsAndSpline(pointsWithCamberedStart(chine, spoints, frontCamber, rearCamber)),\n        pointsAndSpline(pointsWithCamberedStart(sheer, spoints, frontCamber, rearCamber)),\n    ];\n    console.log(\"blep\");\n    console.log(blep);\n    console.log(blep.length);\n    const wires = [];\n    for (const res of blep) {\n        //@ts-ignore\n        wires.push(replicad.assembleWire([res[0]]));\n    }\n    console.log(wires);\n    return replicad.loft(wires);\n}\n"
-    },
-    {
-      "atomType": "Code",
-      "x": 0.50390625,
-      "y": 0.86,
-      "uniqueID": "id-790",
-      "ioValues": [
-        {
-          "name": "end",
-          "ioValue": 7
-        }
-      ],
-      "interpreterVersion": 1,
-      "code": "\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end: number = 3) {\n  return replicad.drawCircle(4).sketchOnPlane(\"XY\").extrude(end + 0.2)\n}\n",
-      "compiledCode": "\"use strict\";\n/**\n * Notice that defaults are set for both count and offset.\n */\nfunction run(end = 3) {\n    return replicad.drawCircle(4).sketchOnPlane(\"XY\").extrude(end + 0.2);\n}\n"
-    },
-    {
-      "atomType": "Assembly",
-      "x": 0.6627604166666666,
-      "y": 0.6799999999999999,
-      "uniqueID": "id-854",
-      "ioValues": [
-        {
-          "name": "Shape 3",
-          "ioValue": null
-        },
-        {
-          "name": "Shape 4",
-          "ioValue": null
-        },
-        {
-          "name": "Shape 5",
-          "ioValue": null
-        }
-      ]
-    },
-    {
-      "atomType": "GitHubMolecule",
-      "x": 0.7532552083333334,
-      "y": 0.42857142857142855,
-      "uniqueID": "id-366",
-      "name": "IthFromAssembly",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "i",
-          "ioValue": 1
-        }
-      ],
-      "topLevel": false,
-      "allAtoms": [
-        {
-          "atomType": "Output",
-          "x": 0.98,
-          "y": 0.5,
-          "uniqueID": "id-362",
-          "ioValues": [
-            {
-              "name": "number or geometry",
-              "ioValue": "__GEOMETRY_INPUT__"
-            }
-          ]
-        },
-        {
-          "atomType": "Code",
-          "x": 0.5026041666666666,
-          "y": 0.6845238095238095,
-          "uniqueID": "id-363",
-          "ioValues": [
-            {
-              "name": "geometry",
-              "ioValue": "__GEOMETRY_INPUT__"
-            },
-            {
-              "name": "i",
-              "ioValue": 1
-            }
-          ],
-          "interpreterVersion": 0,
-          "code": "\n      const Inputs = [\n       {inputName: \"geometry\", type: \"geometry\", defaultValue: null},\n      {inputName: \"i\", type: \"number\", defaultValue: 0},\n      ]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n\n      //Gets the shape from the library - no need to clone or access geometry directly\n      let importedShape = library[geometry]\n      let j = 0;\n      console.log(\"foo\")\n      console.log(importedShape)\n      const leafList = await AssemblyAsIterable(importedShape)\n      console.log(leafList)\n      if (i >= leafList.length) {\n        throw new Error(`Assembly only has ${leafList.length} entries. Tried to find index: ${i}.`)\n      }\n      return leafList[i]\n\n\n      /**\n      Built-in Functions Available:\n      - Move(geometry, x, y, z) - Move a shape in 3D space\n      - Rotate(geometry, x, y, z) - Rotate a shape around X, Y, Z axes (degrees)\n      - Scale(geometry, factor) - Scale a shape by a factor\n      - Assembly([shapes]) - Combine multiple shapes into an assembly\n      - Intersect(shape1, shape2) - Boolean intersection of two shapes\n      - GetBounds(geometry) - Get the bounding box of a shape\n      - Fillet(geometry, radius) - Round edges with specified radius\n      - Chamfer(geometry, size) - Bevel edges with specified size\n\n      To Use the Code Atom, enter your inputs to the input list as an object array:\n      const Inputs = [\n        {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n        {inputName: \"dist\", type: \"number\", defaultValue: 5},\n        {inputName: \"height\", type: \"number\", defaultValue: 10}\n      ]\n\n      Access imported geometry using library[inputName] - the built-in functions handle \n      the complexity of accessing geometry arrays and maintaining metadata automatically.\n\n      Simple Example - Move a shape:\n         const Inputs = [\n          {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n          {inputName: \"x\", type: \"number\", defaultValue: 5}\n        ]\n        let movedShape = await Move(library[shape], x, 0, 0)\n        return movedShape\n      */\n      "
-        },
-        {
-          "atomType": "Input",
-          "x": 0.025384615384615384,
-          "y": 0.15384615384615385,
-          "uniqueID": "id-364",
-          "name": "geometry",
-          "type": "geometry"
-        },
-        {
-          "atomType": "Input",
-          "x": 0.025384615384615384,
-          "y": 0.24615384615384617,
-          "uniqueID": "id-365",
-          "name": "i",
-          "type": "number"
-        }
-      ],
-      "allConnectors": [
-        {
-          "ap2Name": "number or geometry",
-          "ap1ID": "id-363",
-          "ap2ID": "id-362"
-        },
-        {
-          "ap2Name": "geometry",
-          "ap1ID": "id-364",
-          "ap2ID": "id-363"
-        },
-        {
-          "ap2Name": "i",
-          "ap1ID": "id-365",
-          "ap2ID": "id-363"
-        }
-      ],
-      "parentRepo": {
-        "lastFoundGit": "2026-05-01T18:23:39.021Z",
-        "privateRepo": false,
-        "repoName": "IthFromAssembly",
-        "dateCreated": "2025-11-03T02:49:44Z",
-        "likes": 0,
-        "readMe": "https://raw.githubusercontent.com/tristan-huber/IthFromAssembly/master/README.md?sanitize=true",
-        "yyyy": 2025,
-        "topMoleculeID": "id-2718",
-        "githubMoleculesUsed": [],
-        "html_url": "https://github.com/tristan-huber/IthFromAssembly",
-        "topics": [
-          "abundance-tool"
-        ],
-        "parentRepo": null,
-        "forks": 0,
-        "dateModified": "739558",
-        "ranking": 3.6,
-        "searchField": "ithfromassembly tristan-huber get the ith leaf from an assembly abundance-tool",
-        "owner": "tristan-huber",
-        "description": "Get the ith leaf from an assembly",
-        "contentURL": "https://raw.githubusercontent.com/tristan-huber/IthFromAssembly/master/project.abundance?sanitize=true",
-        "svgURL": "https://raw.githubusercontent.com/tristan-huber/IthFromAssembly/master/project.svg?sanitize=true",
-        "isLocal": false
-      },
-      "unitsKey": "Unitless",
-      "fileTypeVersion": 1
-    },
-    {
-      "atomType": "Move",
-      "x": 0.5,
-      "y": 0.5,
-      "uniqueID": "id-922",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "xDist",
-          "ioValue": 20,
-          "currentEquation": "20"
-        },
-        {
-          "name": "yDist",
-          "ioValue": 3
-        },
-        {
-          "name": "zDist",
-          "ioValue": 0
-        }
-      ]
     }
   ],
   "allConnectors": [
     {
-      "ap2Name": "Shape 1",
-      "ap1ID": "faf25742-ee63-4660-93f6-61373f099b54",
-      "ap2ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039"
+      "ap2Name": "shape",
+      "ap1ID": "id-39",
+      "ap2ID": "id-1001"
     },
     {
       "ap2Name": "geometry",
-      "ap1ID": "faf25742-ee63-4660-93f6-61373f099b54",
+      "ap1ID": "id-546",
       "ap2ID": "id-39"
     },
     {
-      "ap2Name": "shape",
-      "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
-      "ap2ID": "id-89"
-    },
-    {
-      "ap2Name": "movedPart",
-      "ap1ID": "902265eb-1e76-4c47-b407-c968ea10559e",
-      "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
-    },
-    {
-      "ap2Name": "geometry",
-      "ap1ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039",
-      "ap2ID": "902265eb-1e76-4c47-b407-c968ea10559e"
-    },
-    {
-      "ap2Name": "basisPart",
-      "ap1ID": "id-39",
-      "ap2ID": "69571ba7-0e6c-4202-be46-6d2d781d2d22"
-    },
-    {
-      "ap2Name": "shape",
-      "ap1ID": "id-39",
-      "ap2ID": "id-281"
-    },
-    {
-      "ap2Name": "shape",
-      "ap1ID": "id-39",
-      "ap2ID": "id-722"
-    },
-    {
-      "ap2Name": "geometry",
-      "ap1ID": "id-39",
-      "ap2ID": "id-922"
-    },
-    {
-      "ap2Name": "Shape 3",
-      "ap1ID": "id-546",
-      "ap2ID": "be2ff5bd-1d74-412e-91ca-e6c80a9f7039"
-    },
-    {
-      "ap2Name": "Shape 1",
-      "ap1ID": "id-551",
-      "ap2ID": "id-606"
-    },
-    {
-      "ap2Name": "geometry",
-      "ap1ID": "id-597",
-      "ap2ID": "id-600"
-    },
-    {
-      "ap2Name": "Shape 2",
-      "ap1ID": "id-600",
-      "ap2ID": "id-606"
-    },
-    {
-      "ap2Name": "Shape 4",
-      "ap1ID": "id-785",
-      "ap2ID": "id-854"
-    },
-    {
-      "ap2Name": "geometry",
-      "ap1ID": "id-854",
-      "ap2ID": "id-366"
-    },
-    {
-      "ap2Name": "Shape 3",
-      "ap1ID": "id-922",
-      "ap2ID": "id-854"
-    },
-    {
-      "ap2Name": "Shape 5",
-      "ap1ID": "id-922",
-      "ap2ID": "id-854"
+      "ap2Name": "number or geometry",
+      "ap1ID": "id-1001",
+      "ap2ID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4"
     }
   ],
   "unitsKey": "MM",
