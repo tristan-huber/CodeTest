@@ -39,7 +39,7 @@
         {
           "atomType": "Input",
           "x": 0,
-          "y": 0.1,
+          "y": 0.2,
           "uniqueID": "id-1000",
           "name": "radius",
           "options": []
@@ -142,6 +142,33 @@
       "lastReloadedFromGithubAt": 1790356787159
     },
     {
+      "atomType": "Code",
+      "x": 0.5,
+      "y": 0.7,
+      "uniqueID": "id-1022",
+      "interpreterVersion": 1,
+      "code": "function run() {\n  return context.units;\n}",
+      "compiledCode": "\"use strict\";\nfunction run() {\n    return context.units;\n}\n"
+    },
+    {
+      "atomType": "Equation",
+      "x": 0.7,
+      "y": 0.3,
+      "uniqueID": "id-1031",
+      "name": "x + y",
+      "ioValues": [
+        {
+          "name": "x",
+          "ioValue": "MM"
+        },
+        {
+          "name": "y",
+          "ioValue": 1
+        }
+      ],
+      "currentEquation": "x + y"
+    },
+    {
       "atomType": "Extrude",
       "x": 0.3,
       "y": 0.4,
@@ -187,8 +214,13 @@
     },
     {
       "ap2Name": "number or geometry",
-      "ap1ID": "id-1001",
+      "ap1ID": "id-1022",
       "ap2ID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4"
+    },
+    {
+      "ap2Name": "x",
+      "ap1ID": "id-1022",
+      "ap2ID": "id-1031"
     }
   ],
   "unitsKey": "MM",
