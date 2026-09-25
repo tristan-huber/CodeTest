@@ -85,7 +85,8 @@
           "options": [],
           "selectedEdgeData": {
             "0": [
-              6,
+              3,
+              0,
               7
             ]
           }
@@ -171,7 +172,7 @@
       "ioValues": [
         {
           "name": "makeDisjoint",
-          "ioValue": false
+          "ioValue": true
         },
         {
           "name": "Shape4",
@@ -196,7 +197,7 @@
         {
           "name": "Shape 1",
           "ioValue": {
-            "geometry": "3bdebe18-0",
+            "geometry": "4f3a11e0-0",
             "color": "#aad7f2",
             "tags": [],
             "bom": [],
@@ -220,7 +221,8 @@
             "metadata": {},
             "selection": {
               "edges": [
-                6,
+                3,
+                0,
                 7
               ]
             },
