@@ -83,11 +83,7 @@
           "name": "shape",
           "type": "edgeselect",
           "options": [],
-          "selectedEdgeData": {
-            "0": [
-              4
-            ]
-          }
+          "selectedEdgeData": {}
         }
       ],
       "allConnectors": [
@@ -164,8 +160,8 @@
     },
     {
       "atomType": "Assembly",
-      "x": 0.4,
-      "y": 0.2,
+      "x": 0.5,
+      "y": 0.4,
       "uniqueID": "id-1056",
       "ioValues": [
         {
@@ -175,16 +171,75 @@
         {
           "name": "Shape4",
           "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "Shape5",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "Shape6",
-          "ioValue": "__GEOMETRY_INPUT__"
         }
       ]
+    },
+    {
+      "atomType": "Fusion",
+      "x": 0.5,
+      "y": 0.7,
+      "uniqueID": "id-1088",
+      "ioValues": [
+        {
+          "name": "Shape 1",
+          "ioValue": {
+            "geometry": "2b7851d8-0",
+            "color": "#aad7f2",
+            "tags": [],
+            "bom": [],
+            "plane": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "xDir": [
+                1,
+                0,
+                0
+              ],
+              "normal": [
+                0,
+                0,
+                1
+              ]
+            },
+            "metadata": {},
+            "selection": {
+              "edges": []
+            },
+            "dimension": "3D"
+          }
+        },
+        {
+          "name": "Shape2",
+          "ioValue": {
+            "geometry": "extrude-rectangle-10-20-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-30",
+            "dimension": "3D",
+            "plane": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "xDir": [
+                1,
+                0,
+                0
+              ],
+              "normal": [
+                0,
+                0,
+                1
+              ]
+            },
+            "color": "#aad7f2",
+            "tags": [],
+            "bom": []
+          }
+        }
+      ],
+      "unionType": "Fusion"
     },
     {
       "atomType": "Extrude",
@@ -236,9 +291,9 @@
       "ap2ID": "id-1001"
     },
     {
-      "ap2Name": "Shape4",
+      "ap2Name": "Shape2",
       "ap1ID": "id-39",
-      "ap2ID": "id-1056"
+      "ap2ID": "id-1088"
     },
     {
       "ap2Name": "geometry",
@@ -246,9 +301,9 @@
       "ap2ID": "id-39"
     },
     {
-      "ap2Name": "Shape5",
+      "ap2Name": "Shape 1",
       "ap1ID": "id-1001",
-      "ap2ID": "id-1056"
+      "ap2ID": "id-1088"
     }
   ],
   "unitsKey": "MM",
