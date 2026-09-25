@@ -39,7 +39,7 @@
         {
           "atomType": "Input",
           "x": 0,
-          "y": 0.2,
+          "y": 0.1,
           "uniqueID": "id-1000",
           "name": "radius",
           "options": []
@@ -85,7 +85,9 @@
           "options": [],
           "selectedEdgeData": {
             "0": [
-              4
+              4,
+              6,
+              1
             ]
           }
         }
