@@ -26,13 +26,12 @@
       "name": "selected.Fillet",
       "ioValues": [
         {
-          "name": "shape",
-          "ioValue": "__GEOMETRY_INPUT__"
+          "name": "radius",
+          "ioValue": 3
         },
         {
-          "name": "radius",
-          "ioValue": 3,
-          "currentEquation": "3"
+          "name": "shape",
+          "ioValue": "__GEOMETRY_INPUT__"
         }
       ],
       "topLevel": false,
@@ -93,6 +92,11 @@
       ],
       "allConnectors": [
         {
+          "ap2Name": "radius",
+          "ap1ID": "id-1000",
+          "ap2ID": "id-998"
+        },
+        {
           "ap2Name": "number or geometry",
           "ap1ID": "id-998",
           "ap2ID": "id-997"
@@ -100,11 +104,6 @@
         {
           "ap2Name": "toFillet",
           "ap1ID": "id-999",
-          "ap2ID": "id-998"
-        },
-        {
-          "ap2Name": "radius",
-          "ap1ID": "id-1000",
           "ap2ID": "id-998"
         }
       ],
