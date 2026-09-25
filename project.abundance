@@ -20,8 +20,8 @@
     },
     {
       "atomType": "GitHubMolecule",
-      "x": 0.5,
-      "y": 0.6,
+      "x": 0.3,
+      "y": 0.7,
       "uniqueID": "id-1001",
       "name": "selected.Fillet",
       "ioValues": [
@@ -83,13 +83,7 @@
           "name": "shape",
           "type": "edgeselect",
           "options": [],
-          "selectedEdgeData": {
-            "0": [
-              4,
-              6,
-              1
-            ]
-          }
+          "selectedEdgeData": {}
         }
       ],
       "allConnectors": [
@@ -158,15 +152,31 @@
       "name": "x + y",
       "ioValues": [
         {
-          "name": "x",
-          "ioValue": "MM"
-        },
-        {
           "name": "y",
           "ioValue": 1
         }
       ],
       "currentEquation": "x + y"
+    },
+    {
+      "atomType": "Assembly",
+      "x": 0.5,
+      "y": 0.4,
+      "uniqueID": "id-1056",
+      "ioValues": [
+        {
+          "name": "makeDisjoint",
+          "ioValue": true
+        },
+        {
+          "name": "Shape3",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "Shape4",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ]
     },
     {
       "atomType": "Extrude",
@@ -203,16 +213,6 @@
   ],
   "allConnectors": [
     {
-      "ap2Name": "shape",
-      "ap1ID": "id-39",
-      "ap2ID": "id-1001"
-    },
-    {
-      "ap2Name": "geometry",
-      "ap1ID": "id-546",
-      "ap2ID": "id-39"
-    },
-    {
       "ap2Name": "number or geometry",
       "ap1ID": "id-1022",
       "ap2ID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4"
@@ -221,6 +221,16 @@
       "ap2Name": "x",
       "ap1ID": "id-1022",
       "ap2ID": "id-1031"
+    },
+    {
+      "ap2Name": "shape",
+      "ap1ID": "id-39",
+      "ap2ID": "id-1001"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "id-546",
+      "ap2ID": "id-39"
     }
   ],
   "unitsKey": "MM",
