@@ -83,7 +83,11 @@
           "name": "shape",
           "type": "edgeselect",
           "options": [],
-          "selectedEdgeData": {}
+          "selectedEdgeData": {
+            "0": [
+              4
+            ]
+          }
         }
       ],
       "allConnectors": [
@@ -160,8 +164,8 @@
     },
     {
       "atomType": "Assembly",
-      "x": 0.5,
-      "y": 0.4,
+      "x": 0.4,
+      "y": 0.2,
       "uniqueID": "id-1056",
       "ioValues": [
         {
@@ -169,11 +173,15 @@
           "ioValue": true
         },
         {
-          "name": "Shape3",
+          "name": "Shape4",
           "ioValue": "__GEOMETRY_INPUT__"
         },
         {
-          "name": "Shape4",
+          "name": "Shape5",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "Shape6",
           "ioValue": "__GEOMETRY_INPUT__"
         }
       ]
@@ -228,9 +236,19 @@
       "ap2ID": "id-1001"
     },
     {
+      "ap2Name": "Shape4",
+      "ap1ID": "id-39",
+      "ap2ID": "id-1056"
+    },
+    {
       "ap2Name": "geometry",
       "ap1ID": "id-546",
       "ap2ID": "id-39"
+    },
+    {
+      "ap2Name": "Shape5",
+      "ap1ID": "id-1001",
+      "ap2ID": "id-1056"
     }
   ],
   "unitsKey": "MM",
