@@ -158,6 +158,10 @@
       "name": "x + y",
       "ioValues": [
         {
+          "name": "x",
+          "ioValue": "MM"
+        },
+        {
           "name": "y",
           "ioValue": 1
         }
@@ -196,65 +200,11 @@
       "ioValues": [
         {
           "name": "Shape 1",
-          "ioValue": {
-            "geometry": "4f3a11e0-0",
-            "color": "#aad7f2",
-            "tags": [],
-            "bom": [],
-            "plane": {
-              "origin": [
-                0,
-                0,
-                0
-              ],
-              "xDir": [
-                1,
-                0,
-                0
-              ],
-              "normal": [
-                0,
-                0,
-                1
-              ]
-            },
-            "metadata": {},
-            "selection": {
-              "edges": [
-                3,
-                0,
-                7
-              ]
-            },
-            "dimension": "3D"
-          }
+          "ioValue": "__GEOMETRY_INPUT__"
         },
         {
           "name": "Shape2",
-          "ioValue": {
-            "geometry": "extrude-rectangle-10-20-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-30",
-            "dimension": "3D",
-            "plane": {
-              "origin": [
-                0,
-                0,
-                0
-              ],
-              "xDir": [
-                1,
-                0,
-                0
-              ],
-              "normal": [
-                0,
-                0,
-                1
-              ]
-            },
-            "color": "#aad7f2",
-            "tags": [],
-            "bom": []
-          }
+          "ioValue": "__GEOMETRY_INPUT__"
         }
       ],
       "unionType": "Fusion"
@@ -410,6 +360,16 @@
   ],
   "allConnectors": [
     {
+      "ap2Name": "Shape5",
+      "ap1ID": "id-1001",
+      "ap2ID": "id-1056"
+    },
+    {
+      "ap2Name": "Shape 1",
+      "ap1ID": "id-1001",
+      "ap2ID": "id-1088"
+    },
+    {
       "ap2Name": "number or geometry",
       "ap1ID": "id-1022",
       "ap2ID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4"
@@ -430,29 +390,19 @@
       "ap2ID": "id-1001"
     },
     {
-      "ap2Name": "Shape2",
-      "ap1ID": "id-39",
-      "ap2ID": "id-1088"
-    },
-    {
       "ap2Name": "Shape4",
       "ap1ID": "id-39",
       "ap2ID": "id-1056"
     },
     {
-      "ap2Name": "geometry",
-      "ap1ID": "id-546",
-      "ap2ID": "id-39"
-    },
-    {
-      "ap2Name": "Shape 1",
-      "ap1ID": "id-1001",
+      "ap2Name": "Shape2",
+      "ap1ID": "id-39",
       "ap2ID": "id-1088"
     },
     {
-      "ap2Name": "Shape5",
-      "ap1ID": "id-1001",
-      "ap2ID": "id-1056"
+      "ap2Name": "geometry",
+      "ap1ID": "id-546",
+      "ap2ID": "id-39"
     }
   ],
   "unitsKey": "MM",
