@@ -771,12 +771,12 @@
             },
             {
               "name": "y-axis degrees",
-              "ioValue": 0
+              "ioValue": 45,
+              "currentEquation": "45"
             },
             {
               "name": "z-axis degrees",
-              "ioValue": 90,
-              "currentEquation": "90"
+              "ioValue": 45
             }
           ]
         }
@@ -796,6 +796,11 @@
           "ap2Name": "geometry",
           "ap1ID": "id-1282",
           "ap2ID": "id-1288"
+        },
+        {
+          "ap2Name": "number or geometry",
+          "ap1ID": "id-1288",
+          "ap2ID": "id-1269"
         }
       ],
       "fileTypeVersion": 1
