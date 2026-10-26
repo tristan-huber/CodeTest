@@ -20,6 +20,68 @@
     },
     {
       "atomType": "Assembly",
+      "x": 0.8,
+      "y": 0.3,
+      "uniqueID": "id-100",
+      "ioValues": [
+        {
+          "name": "makeDisjoint",
+          "ioValue": false
+        },
+        {
+          "name": "Shape 1",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "Shape2",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "Shape3",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "Shape4",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ]
+    },
+    {
+      "atomType": "Export",
+      "x": 0.9,
+      "y": 0.6,
+      "uniqueID": "id-107",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "File Type",
+          "ioValue": "SVG",
+          "currentEquation": "SVG"
+        },
+        {
+          "name": "Resolution (dpi)",
+          "ioValue": 96
+        },
+        {
+          "name": "STL Tolerance",
+          "ioValue": 0.05
+        },
+        {
+          "name": "Part Name",
+          "ioValue": "CodeTest",
+          "currentEquation": "CodeTest"
+        }
+      ],
+      "type": "SVG",
+      "resolution": 96,
+      "importIndex": 0,
+      "partName": "CodeTest"
+    },
+    {
+      "atomType": "Assembly",
       "x": 0.4,
       "y": 0.5,
       "uniqueID": "id-13",
@@ -45,7 +107,7 @@
     {
       "atomType": "Extrude",
       "x": 0.5,
-      "y": 0.2,
+      "y": 0.3,
       "uniqueID": "id-19",
       "ioValues": [
         {
@@ -85,8 +147,8 @@
     },
     {
       "atomType": "Rotate",
-      "x": 0.7,
-      "y": 0.4,
+      "x": 0.6,
+      "y": 0.6,
       "uniqueID": "id-29",
       "ioValues": [
         {
@@ -103,8 +165,8 @@
         },
         {
           "name": "z-axis degrees",
-          "ioValue": 20,
-          "currentEquation": "20"
+          "ioValue": 90,
+          "currentEquation": "90"
         }
       ]
     },
@@ -148,9 +210,24 @@
   ],
   "allConnectors": [
     {
+      "ap2Name": "number or geometry",
+      "ap1ID": "id-100",
+      "ap2ID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "id-100",
+      "ap2ID": "id-107"
+    },
+    {
       "ap2Name": "geometry",
       "ap1ID": "id-13",
       "ap2ID": "id-19"
+    },
+    {
+      "ap2Name": "Shape 1",
+      "ap1ID": "id-19",
+      "ap2ID": "id-100"
     },
     {
       "ap2Name": "geometry",
@@ -158,14 +235,19 @@
       "ap2ID": "id-23"
     },
     {
+      "ap2Name": "Shape2",
+      "ap1ID": "id-23",
+      "ap2ID": "id-100"
+    },
+    {
       "ap2Name": "geometry",
       "ap1ID": "id-23",
       "ap2ID": "id-29"
     },
     {
-      "ap2Name": "number or geometry",
+      "ap2Name": "Shape3",
       "ap1ID": "id-29",
-      "ap2ID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4"
+      "ap2ID": "id-100"
     },
     {
       "ap2Name": "Shape2",
