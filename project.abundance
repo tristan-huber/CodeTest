@@ -105,6 +105,142 @@
       ]
     },
     {
+      "atomType": "Rectangle",
+      "x": 0.2,
+      "y": 0.7,
+      "uniqueID": "id-147",
+      "ioValues": [
+        {
+          "name": "x length",
+          "ioValue": 200
+        },
+        {
+          "name": "y length",
+          "ioValue": 20,
+          "currentEquation": "20"
+        }
+      ]
+    },
+    {
+      "atomType": "Text",
+      "x": 0.2,
+      "y": 0.6,
+      "uniqueID": "id-151",
+      "ioValues": [
+        {
+          "name": "Font Size",
+          "ioValue": 20,
+          "currentEquation": "20"
+        },
+        {
+          "name": "Text",
+          "ioValue": "200 wide",
+          "currentEquation": "200 wide"
+        },
+        {
+          "name": "Font Family",
+          "ioValue": "ROBOTO",
+          "currentEquation": "ROBOTO"
+        }
+      ],
+      "fontFamily": "ROBOTO",
+      "selectedFontIndex": 0
+    },
+    {
+      "atomType": "Move",
+      "x": 0.3,
+      "y": 0.7,
+      "uniqueID": "id-156",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "xDist",
+          "ioValue": -40,
+          "currentEquation": "-40"
+        },
+        {
+          "name": "yDist",
+          "ioValue": -7,
+          "currentEquation": "-7"
+        },
+        {
+          "name": "zDist",
+          "ioValue": 0
+        }
+      ]
+    },
+    {
+      "atomType": "Difference",
+      "x": 0.4,
+      "y": 0.8,
+      "uniqueID": "id-162",
+      "ioValues": [
+        {
+          "name": "retain",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "remove",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ]
+    },
+    {
+      "atomType": "Extrude",
+      "x": 0.5,
+      "y": 0.7,
+      "uniqueID": "id-166",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "height",
+          "ioValue": 1,
+          "currentEquation": "1"
+        }
+      ]
+    },
+    {
+      "atomType": "Gcode",
+      "x": 0.6,
+      "y": 0.8,
+      "uniqueID": "id-170",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "Tool Size",
+          "ioValue": 6.35
+        },
+        {
+          "name": "Passes",
+          "ioValue": 1
+        },
+        {
+          "name": "Speed",
+          "ioValue": 1500
+        },
+        {
+          "name": "Cut Through",
+          "ioValue": 0
+        },
+        {
+          "name": "Part Name",
+          "ioValue": "CodeTest",
+          "currentEquation": "CodeTest"
+        }
+      ],
+      "partName": "CodeTest",
+      "sortDirection": "Left"
+    },
+    {
       "atomType": "Extrude",
       "x": 0.5,
       "y": 0.3,
@@ -207,11 +343,6 @@
   ],
   "allConnectors": [
     {
-      "ap2Name": "number or geometry",
-      "ap1ID": "id-100",
-      "ap2ID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4"
-    },
-    {
       "ap2Name": "geometry",
       "ap1ID": "id-100",
       "ap2ID": "id-107"
@@ -220,6 +351,36 @@
       "ap2Name": "geometry",
       "ap1ID": "id-13",
       "ap2ID": "id-19"
+    },
+    {
+      "ap2Name": "number or geometry",
+      "ap1ID": "id-147",
+      "ap2ID": "2472c18b-1c5c-4db6-8460-c0d652fd7bd4"
+    },
+    {
+      "ap2Name": "retain",
+      "ap1ID": "id-147",
+      "ap2ID": "id-162"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "id-151",
+      "ap2ID": "id-156"
+    },
+    {
+      "ap2Name": "remove",
+      "ap1ID": "id-156",
+      "ap2ID": "id-162"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "id-162",
+      "ap2ID": "id-166"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "id-166",
+      "ap2ID": "id-170"
     },
     {
       "ap2Name": "Shape 1",
