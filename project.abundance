@@ -116,21 +116,19 @@
         },
         {
           "name": "y length",
-          "ioValue": 20,
-          "currentEquation": "20"
+          "ioValue": 20
         }
       ]
     },
     {
       "atomType": "Text",
-      "x": 0.2,
-      "y": 0.6,
+      "x": 0.1335,
+      "y": 0.6686,
       "uniqueID": "id-151",
       "ioValues": [
         {
           "name": "Font Size",
-          "ioValue": 20,
-          "currentEquation": "20"
+          "ioValue": 20
         },
         {
           "name": "Text",
@@ -158,13 +156,11 @@
         },
         {
           "name": "xDist",
-          "ioValue": -40,
-          "currentEquation": "-40"
+          "ioValue": -40
         },
         {
           "name": "yDist",
-          "ioValue": -7,
-          "currentEquation": "-7"
+          "ioValue": -7
         },
         {
           "name": "zDist",
@@ -200,8 +196,7 @@
         },
         {
           "name": "height",
-          "ioValue": 1,
-          "currentEquation": "1"
+          "ioValue": 1
         }
       ]
     },
@@ -229,8 +224,7 @@
         },
         {
           "name": "Cut Through",
-          "ioValue": 0,
-          "currentEquation": "0"
+          "ioValue": 0
         },
         {
           "name": "Part Name",
@@ -278,6 +272,94 @@
         {
           "name": "zDist",
           "ioValue": 0
+        }
+      ]
+    },
+    {
+      "atomType": "Import",
+      "x": 0.0495,
+      "y": 0.3086,
+      "uniqueID": "id-234",
+      "fileName": "AbundanceScan-2026-11-02_085407.glb",
+      "name": "Import",
+      "type": "GLB",
+      "repoOwner": "tristan-huber",
+      "repoName": "CodeTest",
+      "SVGwidth": 10,
+      "modelUnits": "Inches"
+    },
+    {
+      "atomType": "Assembly",
+      "x": 0.2253,
+      "y": 0.4171,
+      "uniqueID": "id-236",
+      "ioValues": [
+        {
+          "name": "makeDisjoint",
+          "ioValue": false
+        },
+        {
+          "name": "Shape 1",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "Shape2",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "Shape3",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ]
+    },
+    {
+      "atomType": "Move",
+      "x": 0.1478,
+      "y": 0.2457,
+      "uniqueID": "id-242",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "xDist",
+          "ioValue": 0
+        },
+        {
+          "name": "yDist",
+          "ioValue": 0
+        },
+        {
+          "name": "zDist",
+          "ioValue": -1.9,
+          "currentEquation": "-1.9"
+        }
+      ]
+    },
+    {
+      "atomType": "Rotate",
+      "x": 0.1641,
+      "y": 0.4743,
+      "uniqueID": "id-248",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "x-axis degrees",
+          "ioValue": 90,
+          "currentEquation": "90"
+        },
+        {
+          "name": "y-axis degrees",
+          "ioValue": 0
+        },
+        {
+          "name": "z-axis degrees",
+          "ioValue": 0,
+          "currentEquation": "0"
         }
       ]
     },
@@ -369,6 +451,11 @@
       "ap2ID": "id-156"
     },
     {
+      "ap2Name": "Shape 1",
+      "ap1ID": "id-151",
+      "ap2ID": "id-236"
+    },
+    {
       "ap2Name": "remove",
       "ap1ID": "id-156",
       "ap2ID": "id-162"
@@ -402,6 +489,21 @@
       "ap2Name": "geometry",
       "ap1ID": "id-23",
       "ap2ID": "id-29"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "id-234",
+      "ap2ID": "id-242"
+    },
+    {
+      "ap2Name": "Shape2",
+      "ap1ID": "id-242",
+      "ap2ID": "id-236"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "id-242",
+      "ap2ID": "id-248"
     },
     {
       "ap2Name": "Shape3",
