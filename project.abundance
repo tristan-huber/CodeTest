@@ -82,8 +82,8 @@
     },
     {
       "atomType": "Assembly",
-      "x": 0.3,
-      "y": 0.4,
+      "x": 0.3639,
+      "y": 0.3629,
       "uniqueID": "id-13",
       "ioValues": [
         {
@@ -314,8 +314,8 @@
     },
     {
       "atomType": "Move",
-      "x": 0.1478,
-      "y": 0.2457,
+      "x": 0.1237,
+      "y": 0.2914,
       "uniqueID": "id-242",
       "ioValues": [
         {
