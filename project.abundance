@@ -237,8 +237,8 @@
     },
     {
       "atomType": "Extrude",
-      "x": 0.5,
-      "y": 0.3,
+      "x": 0.4284,
+      "y": 0.0829,
       "uniqueID": "id-19",
       "ioValues": [
         {
@@ -332,8 +332,7 @@
         },
         {
           "name": "zDist",
-          "ioValue": -1.9,
-          "currentEquation": "-1.9"
+          "ioValue": -1.9
         }
       ]
     },
@@ -349,8 +348,7 @@
         },
         {
           "name": "x-axis degrees",
-          "ioValue": 90,
-          "currentEquation": "90"
+          "ioValue": 90
         },
         {
           "name": "y-axis degrees",
@@ -358,8 +356,7 @@
         },
         {
           "name": "z-axis degrees",
-          "ioValue": 0,
-          "currentEquation": "0"
+          "ioValue": 0
         }
       ]
     },
